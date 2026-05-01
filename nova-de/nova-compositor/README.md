@@ -1,88 +1,93 @@
-# NovaOS Wayland Compositor
+# NovaCompositor - Wayland Compositor for NovaDe
 
-A modern, GPU-accelerated Wayland compositor built with Rust and wlroots/smithay.
+High-performance Wayland compositor written in C with assembly optimizations for the NovaOS desktop environment.
 
 ## Features
 
-- **Wayland Native**: Full Wayland protocol support with X11 compatibility via XWayland
-- **GPU Acceleration**: OpenGL ES 2.0/3.0 rendering with DRM/KMS direct scanout
-- **Multi-Monitor**: Support for multiple outputs with different resolutions and refresh rates
-- **Input Handling**: Libinput integration for keyboard, mouse, touch, and tablet input
-- **XDG Shell**: Modern window management with popup, fullscreen, and tiled states
-- **Layer Shell**: Support for panels, overlays, backgrounds, and lock screens
-- **Screen Capture**: Pipewire-based screen capture for screenshots and recording
-- **DRM Lease**: VR headset and advanced display output support
+- **Wayland Protocol**: Full Wayland compositor using wlroots
+- **Assembly Optimizations**: SIMD-optimized rendering (SSE, AVX, AVX2)
+- **Smooth Animations**: Spring physics and bezier curve animations at 60 FPS
+- **Multi-Monitor Support**: Full output layout management
+- **Advanced Input**: Keyboard, pointer, and touch input handling
+- **Window Management**: Snap layouts, virtual desktops, tiling support
+
+## Architecture
+
+```
+src/
+├── nova-compositor.c    # Core compositor server and event loop
+├── nova-input.c         # Input device handling (keyboard, pointer)
+├── nova-output.c        # Output/monitor management
+├── nova-view.c          # Window/view management
+├── nova-render.c        # GPU-accelerated rendering
+├── nova-keybindings.c   # Keyboard shortcut system
+└── nova-animations.c    # Animation engine with spring physics
+
+include/
+└── nova-compositor.h    # Public API header
+```
 
 ## Building
 
 ### Prerequisites
 
 ```bash
-sudo apt install \
-    meson ninja-build cargo rustc \
-    libwlroots-dev libwayland-dev libinput-dev \
-    libdrm-dev libegl-dev libgles2-mesa-dev \
-    libpixman-1-dev libxkbcommon-dev \
-    libdbus-1-dev libsystemd-dev \
-    libgtk-4-dev libadwaita-1-dev
+# Debian/Ubuntu
+sudo apt install meson ninja-build \
+    libwayland-dev wayland-protocols \
+    libwlroots-dev libpixman-1-dev \
+    libxkbcommon-dev libdrm-dev \
+    libegl-dev libgles-dev libgbm-dev
 ```
 
 ### Build Commands
 
 ```bash
-meson setup build --prefix=/usr
+# Configure
+meson setup build --buildtype=release
+
+# Compile
 ninja -C build
+
+# Install
 sudo ninja -C build install
 ```
 
-## Configuration
+## CPU Optimizations
 
-Configuration file location: `~/.config/nova/compositor.conf`
+The compositor automatically detects and uses available CPU features:
 
-```toml
-[general]
-backend = "auto"  # auto, drm, wayland, x11
-xwayland = true
-idle_timeout = 300
+| Feature | Flag | Benefit |
+|---------|------|---------|
+| SSE | `-msse` | Basic SIMD operations |
+| SSE2 | `-msse2` | Integer SIMD |
+| SSE4.1 | `-msse4.1` | Enhanced blending |
+| AVX | `-mavx` | Wider vector ops |
+| AVX2 | `-mavx2` | Best performance |
 
-[input]
-natural_scroll = false
-accel_profile = "adaptive"
-scroll_factor = 1.0
+## Keybindings
 
-[output]
-# Auto-configure all outputs
-mode = "auto"
+| Shortcut | Action |
+|----------|--------|
+| `Super+Enter` | Open terminal |
+| `Super+Q` | Close window |
+| `Alt+Tab` | Switch windows |
+| `Super+[1-9]` | Switch workspace |
+| `Super+L` | Lock screen |
+| `Super+D` | Show desktop |
+| `Super+Shift+Arrows` | Snap windows |
 
-[keybindings]
-# Window management
-alt_tab = "cycle_windows"
-alt_f4 = "close_window"
-super_return = "spawn terminal"
-super_d = "toggle_desktop"
+## Performance Targets
 
-# Screenshots
-print = "screenshot_full"
-alt_print = "screenshot_window"
-shift_print = "screenshot_region"
-```
-
-## Architecture
-
-```
-src/
-├── main.rs           # Entry point and initialization
-├── compositor.rs     # Core compositor state and event loop
-├── render.rs         # OpenGL ES rendering pipeline
-├── input.rs          # Input device handling
-├── output.rs         # Display output management
-├── seat.rs           # Input seat configuration
-├── cursor.rs         # Cursor theme and rendering
-├── xdg_shell.rs      # XDG shell window management
-├── layer_shell.rs    # Layer shell protocol handler
-└── desktop.rs        # Desktop environment integration
-```
+- Boot to desktop: < 10 seconds
+- Idle RAM usage: < 50 MB (compositor only)
+- Frame latency: < 16.67 ms (60 FPS)
+- Input latency: < 5 ms
 
 ## License
 
 GPL-3.0-or-later
+
+## Copyright
+
+Copyright (C) 2024 NovaOS Project

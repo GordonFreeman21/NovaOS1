@@ -2,72 +2,27 @@
 # Build artifacts
 build/
 dist/
-*.o
-*.obj
-*.out
 
 # Dependencies
-node_modules/
-venv/
-.venv/
-__pycache__/
-*.egg-info/
+.nova-deps/
+.subprojects/
 
-# Environment
-.env
-.env.local
-.env.*
-
-# Logs
+# Temporary files
+*.tmp
+*.temp
 *.log
 
-# Editor/IDE
+# Editor/IDE files
 .vscode/
 .idea/
 *.swp
 *.swo
-*.tmp
 
-# OS
+# System files
 .DS_Store
 Thumbs.db
 
-# Coverage
-coverage/
-htmlcov/
-.coverage
-
-# MyPy
-.mypy_cache/
-
-# PyTest
-.pytest_cache/
-
-# Gradle
-.gradle/
-target/
-
-# Compressed files
-*.zip
-*.gz
-*.tar
-*.tgz
-*.bz2
-*.xz
-*.7z
-*.rar
-*.zst
-*.lz4
-*.lzh
-*.cab
-*.arj
-*.rpm
-*.deb
-*.Z
-*.lz
-*.lzo
-*.tar.gz
-*.tar.bz2
-*.tar.xz
-*.tar.zst
+# Configuration backups
+*.bak
+*.backup
 ```
