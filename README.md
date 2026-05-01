@@ -49,13 +49,3 @@ sudo make create-usb USB_DEVICE=/dev/sdX
 - **Recommended**: 4GB RAM, 50GB storage, quad-core CPU
 - **Optimal**: 8GB+ RAM, 100GB+ SSD, quad-core+ CPU
 
-## License
-
-NovaOS is released under the GNU General Public License v3.0.
-See [LICENSE](LICENSE) for details.
-
-## Support
-
-- Documentation: https://novaos.org/docs
-- Community Forum: https://forum.novaos.org
-- Issue Tracker: https://github.com/novaos/novaos/issues
