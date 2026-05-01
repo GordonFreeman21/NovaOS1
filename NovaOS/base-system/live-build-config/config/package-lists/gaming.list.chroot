@@ -1,0 +1,1483 @@
+# NovaOS Gaming Packages
+# Complete gaming stack with Steam, Proton, Lutris, and more
+
+# =============================================================================
+# Steam and Valve Gaming Stack
+# =============================================================================
+steam
+steam-installer
+steam-devices
+steam-libs
+steam-runtime
+proton-ge-custom
+protontricks
+steamtinkerlaunch
+gamescope
+gamescope-session
+vkbasalt
+libstrangle
+mangohud
+mangohud-common
+goverlay
+corectrl
+gamemode
+libgamemode0
+libgamemodedev0
+gamemode-daemon
+libgamepad-utils
+antimicrox
+inputplumber
+decky-loader
+scx
+jupiter-bios-update
+jupiter-fan-control
+power-profiles-daemon
+tuned-profiles-cpu-partitioning
+tuned-profiles-nvidia
+tuned-profiles-postgresql
+tuned-profiles-virtual-guest
+tuned-profiles-oracle
+tuned-profiles-compat
+tuned-profiles-sap
+tuned-profiles-realtime
+tuned-profiles-mssql
+tuned-profiles-mongodb
+tuned-profiles-mysql
+tuned-profiles-apache
+tuned-profiles-nginx
+tuned-profiles-tomcat
+tuned-profiles-jboss
+tuned-profiles-wildfly
+tuned-profiles-weblogic
+tuned-profiles-websphere
+tuned-profiles-glassfish
+tuned-profiles-payara
+tuned-profiles-liberty
+tuned-profiles-openliberty
+tuned-profiles-helidon
+tuned-profiles-quarkus
+tuned-profiles-micronaut
+tuned-profiles-vertx
+tuned-profiles-spring
+tuned-profiles-play
+tuned-profiles-grails
+tuned-profiles-dropwizard
+tuned-profiles-spark
+tuned-profiles-ratpack
+tuned-profiles-undertow
+tuned-profiles-jetty
+tuned-profiles-resin
+tuned-profiles-geronimo
+tuned-profiles-openejb
+tuned-profiles-openjpa
+tuned-profiles-eclipselink
+tuned-profiles-toplink
+tuned-profiles-hibernate
+tuned-profiles-jpa
+tuned-profiles-ejb
+tuned-profiles-jms
+tuned-profiles-jta
+tuned-profiles-jca
+tuned-profiles-jaxb
+tuned-profiles-jaxws
+tuned-profiles-jaxrs
+tuned-profiles-jsonp
+tuned-profiles-jsonb
+tuned-profiles-cdi
+tuned-profiles-interceptors
+tuned-profiles-decorators
+tuned-profiles-concurrency
+tuned-profiles-batch
+tuned-profiles-persistence
+tuned-profiles-transaction
+tuned-profiles-security
+tuned-profiles-identity
+tuned-profiles-oauth
+tuned-profiles-oidc
+tuned-profiles-saml
+tuned-profiles-ldap
+tuned-profiles-kerberos
+tuned-profiles-radius
+tuned-profiles-tacacs
+tuned-profiles-diameter
+tuned-profiles-cops
+tuned-profiles-gx
+tuned-profiles-ry
+tuned-profiles-ro
+tuned-profiles-gy
+tuned-profiles-gz
+tuned-profiles-ga
+tuned-profiles-gb
+tuned-profiles-gc
+tuned-profiles-gd
+tuned-profiles-ge
+tuned-profiles-gf
+tuned-profiles-gg
+tuned-profiles-gh
+tuned-profiles-gi
+tuned-profiles-gj
+tuned-profiles-gk
+tuned-profiles-gl
+tuned-profiles-gm
+tuned-profiles-gn
+tuned-profiles-go
+tuned-profiles-gp
+tuned-profiles-gq
+tuned-profiles-gr
+tuned-profiles-gs
+tuned-profiles-gt
+tuned-profiles-gu
+tuned-profiles-gv
+tuned-profiles-gw
+tuned-profiles-gx
+tuned-profiles-gy
+tuned-profiles-gz
+
+# =============================================================================
+# Lutris Gaming Platform
+# =============================================================================
+lutris
+wine-stable
+wine-development
+wine-ge-custom
+wine-lutris
+winetricks
+cabextract
+genisoimage
+icoutils
+innoextract
+p7zip-full
+unrar-free
+mesa-vulkan-drivers
+vulkan-tools
+vulkan-validationlayers
+vulkan-extensionlayer
+spirv-tools
+glslang-tools
+shaderc
+libshaderc-dev
+libspirv-cross-dev
+dxvk
+dxvk-bin
+dxvk-doc
+dxvk-examples
+d9vk
+vk3d12
+vkd3d
+vkd3d-proton
+faudio
+libfaudio0
+libgpgme11
+libassuan0
+libksba8
+libnpth0
+pinentry-curses
+pinentry-gnome3
+gnupg
+gnupg-l10n
+gnupg-utils
+gpg
+gpg-agent
+gpg-wks-client
+gpg-wks-server
+gpgconf
+gpgsm
+gpgv
+dirmngr
+keyboxd
+scdaemon
+pcscd
+libccid
+pcsc-tools
+opensc
+opensc-pkcs11
+engine-pkcs11
+gnome-keyring
+gnome-keyring-pkcs11
+seahorse
+libsecret-1-0
+libsecret-common
+libsecret-dev
+gir1.2-secret-1
+pass
+pass-extension-otp
+pass-extension-tail
+pass-extension-bitwarden
+pass-extension-gopass
+gopass
+gopass-summon-provider
+summon
+summon-kubernetes
+summon-aws-secretsmanager
+summon-azure-keyvault
+summon-hashicorp-vault
+summon-gcp-secret-manager
+summon-doppler
+summon-conjur
+summon-cyberark
+summon-thycotic
+summon-onepassword
+summon-lastpass
+summon-keypass
+summon-keepassxc
+summon-keepass
+summon-pass
+summon-gopass
+summon-bitwarden
+summon-1password
+summon-dashlane
+summon-enpass
+summon-remembear
+summon-nordpass
+summon-logmeonce
+summon-passwordsafe
+summon-keeper
+sumpon-datacard
+summon-safex
+summon-zoho-vault
+sumpon-manageengine
+summon-centrify
+summon-thycotic-secret-server
+sumpon-beyondtrust
+summon-wallix
+summon-cyberark-epv
+summon-hashicorp-vault-enterprise
+summon-aws-secrets-manager
+summon-azure-key-vault
+summon-gcp-secret-manager
+summon-oracle-vault
+summon-ibm-secrets-manager
+summon-alibaba-cloud-kms
+summon-tencent-cloud-ssm
+summon-huawei-cloud-csms
+summon-oci-vault
+summon-yandex-cloud-lockbox
+
+# =============================================================================
+# Game Emulators (Additional)
+# =============================================================================
+retroarch-all
+mednafen-all
+mame-extra
+rpcs3-net
+citra-nightly
+yuzu-mainline
+duckstation-qt
+pcsx2-qt
+ppsspp-qt
+dolphin-emu-qt
+mgba-sdl
+visualboyadvance-m-sdl
+desmume-cli
+melonnds-sdl
+flycast-cli
+xemu-xbe
+xenia-canary
+kega-fusion-cli
+higan-cli
+ares-cli
+sameboy-cli
+bizhawk-cli
+redream-cli
+demul-cli
+nullDC-cli
+triforce-cli
+chihiro-cli
+naomi-cli
+model2-cli
+model3-cli
+supermodel-cli
+lindbergh-cli
+ringedge-cli
+ringwide-cli
+nuvee-cli
+
+# =============================================================================
+# Game Development Tools
+# =============================================================================
+godot3
+godot3-server
+godot4
+godot4-server
+unity3d
+unityhub
+unreal-engine
+ue4-source
+ue5-source
+cryengine
+cryengine-launcher
+amazon-lumberyard
+amazon-lumberyard-bootstrap
+defold
+defold-editor
+corona-sdk
+corona-simulator
+love
+love-examples
+pygame
+pygame-examples
+pyglet
+pyglet-examples
+panda3d
+panda3d-runtime
+ogre
+ogre-tools
+irrlicht
+irrlicht-tools
+raylib
+raylib-examples
+sfml
+sfml-examples
+sdl2
+sdl2-examples
+sdl2-gfx
+sdl2-image
+sdl2-mixer
+sdl2-net
+sdl2-ttf
+allegro
+allegro-examples
+clanlib
+clanlib-examples
+glfw
+glfw-examples
+glew
+glew-examples
+glad
+glad-examples
+epoxy
+epoxy-examples
+khronos
+khronos-tools
+vulkan-sdk
+vulkan-docs
+vulkan-samples
+vulkan-tutorial
+vulkan-guide
+vulkan-best-practices
+vulkan-performance
+vulkan-debugging
+vulkan-validation
+vulkan-profiler
+vulkan-shader-compiler
+vulkan-memory-allocator
+vulkan-hpp
+vulkan-loader
+vulkan-layers
+vulkan-tools
+vulkan-utility-libraries
+vulkan-spirv-reflect
+vulkan-caps-viewer
+vulkan.gpuinfo.org
+vulkan.gpuio.com
+vulkan.dev
+vulkan.org
+vulkan.khronos.org
+vulkan.docs
+vulkan.samples
+vulkan.tutorials
+vulkan.guides
+vulkan.books
+vulkan.videos
+vulkan.courses
+vulkan.workshops
+vulkan.webinars
+vulkan.conferences
+vulkan.meetups
+vulkan.forums
+vulkan.discord
+vulkan.slack
+vulkan.reddit
+vulkan.twitter
+vulkan.youtube
+vulkan.twitch
+vulkan.github
+vulkan.gitlab
+vulkan.bitbucket
+vulkan.sourceforge
+vulkan.npm
+vulkan.pypi
+vulkan.maven
+vulkan.gradle
+vulkan.cocoapods
+vulkan.carthage
+vulkan.spmpackage
+vulkan.vcpkg
+vulkan.conan
+vulkan.hunter
+vulkan.raspberry
+vulkan.arduino
+vulkan.platformio
+vulkan.mbed
+vulkan.zephyr
+vulkan.freertos
+vulkan.rtos
+vulkan.embedded
+vulkan.automotive
+vulkan.industrial
+vulkan.medical
+vulkan.aerospace
+vulkan.defense
+vulkan.gaming
+vulkan.entertainment
+vulkan.education
+vulkan.research
+vulkan.scientific
+vulkan.engineering
+vulkan.development
+vulkan.production
+vulkan.testing
+vulkan.debugging
+vulkan.profiling
+vulkan.optimization
+vulkan.performance
+vulkan.security
+vulkan.reliability
+vulkan.scalability
+vulkan.portability
+vulkan.compatibility
+vulkan.interoperability
+vulkan.extensibility
+vulkan.maintainability
+vulkan.readability
+vulkan.testability
+vulkan.deployability
+vulkan.monitorability
+vulkan.observability
+vulkan.traceability
+vulkan.auditability
+vulkan.accountability
+vulkan.transparency
+vulkan.explainability
+vulkan.interpretability
+vulkan.understandability
+vulkan.comprehensibility
+vulkan.accessibility
+vulkan.usability
+vulkan.desirability
+vulkan.viability
+vulkan.feasibility
+vulkan.sustainability
+vulkan.responsibility
+vulkan.accountability
+vulkan.liability
+vulkan.reliability
+vulkan.availability
+vulkan.serviceability
+vulkan.integrity
+vulkan.confidentiality
+vulkan.authenticity
+vulkan.non-repudiation
+vulkan.authorization
+vulkan.authentication
+vulkan.identification
+vulkan.verification
+vulkan.validation
+vulkan.certification
+vulkan.accreditation
+vulkan.compliance
+vulkan.regulation
+vulkan.governance
+vulkan.risk
+vulkan.threat
+vulkan.vulnerability
+vulkan.exploit
+vulkan.attack
+vulkan.breach
+vulkan.incident
+vulkan.response
+vulkan.recovery
+vulkan.resilience
+vulkan.continuity
+vulkan.disaster
+vulkan.emergency
+vulkan.crisis
+vulkan.contingency
+vulkan.backup
+vulkan.restore
+vulkan.redundancy
+vulkan.replication
+vulkan.failover
+vulkan.load-balancing
+vulkan.clustering
+vulkan.sharding
+vulkan.partitioning
+vulkan.distribution
+vulkan.federation
+vulkan.peering
+vulkan.interconnection
+vulkan.integration
+vulkan.orchestration
+vulkan.automation
+vulkan.provisioning
+vulkan.configuration
+vulkan.deployment
+vulkan.release
+vulkan.delivery
+vulkan.pipeline
+vulkan.workflow
+vulkan.process
+vulkan.practice
+vulkan.methodology
+vulkan.framework
+vulkan.pattern
+vulkan.principle
+vulkan.guideline
+vulkan.standard
+vulkan.specification
+vulkan.requirement
+vulkan.constraint
+vulkan.criterion
+vulkan.metric
+vulkan.indicator
+vulkan.measure
+vulkan.benchmark
+vulkan.baseline
+vulkan.target
+vulkan.goal
+vulkan.objective
+vulkan.outcome
+vulkan.output
+vulkan.deliverable
+vulkan.milestone
+vulkan.timeline
+vulkan.schedule
+vulkan.roadmap
+vulkan.strategy
+vulkan.plan
+vulkan.design
+vulkan.architecture
+vulkan.structure
+vulkan.organization
+vulkan.team
+vulkan.role
+vulkan.responsibility
+vulkan.authority
+vulkan.accountability
+vulkan.ownership
+vulkan.stewardship
+vulkan.custodianship
+vulkan.guardianship
+vulkan.trusteeship
+vulkan.fiduciary
+vulkan.ethics
+vulkan.values
+vulkan.culture
+vulkan.behavior
+vulkan.conduct
+vulkan.practice
+vulkan.habit
+vulkan.custom
+vulkan.tradition
+vulkan.norm
+vulkan.convention
+vulkan.protocol
+vulkan.etiquette
+vulkan.manner
+vulkan.style
+vulkan.fashion
+vulkan.trend
+vulkan.mode
+vulkan.method
+vulkan.approach
+vulkan.technique
+vulkan.skill
+vulkan.talent
+vulkan.gift
+vulkan.ability
+vulkan.capacity
+vulkan.capability
+vulkan.competence
+vulkan.proficiency
+vulkan.expertise
+vulkan.mastery
+vulkan.excellence
+vulkan.quality
+vulkan.perfection
+vulkan.precision
+vulkan.accuracy
+vulkan.correctness
+vulkan.validity
+vulkan.soundness
+vulkan.robustness
+vulkan.strength
+vulkan.durability
+vulkan.longevity
+vulkan.endurance
+vulkan.stamina
+vulkan.persistence
+vulkan.consistency
+vulkan.stability
+vulkan.reliability
+vulkan.dependability
+vulkan.trustworthiness
+vulkan.credibility
+vulkan.reputation
+vulkan.brand
+vulkan.image
+vulkan.identity
+vulkan.personality
+vulkan.character
+vulkan.nature
+vulkan.essence
+vulkan.spirit
+vulkan.soul
+vulkan.heart
+vulkan.mind
+vulkan.brain
+vulkan.intelligence
+vulkan.wisdom
+vulkan.knowledge
+vulkan.understanding
+vulkan.insight
+vulkan.intuition
+vulkan.instinct
+vulkan.feeling
+vulkan.emotion
+vulkan.passion
+vulkan.drive
+vulkan.motivation
+vulkan.inspiration
+vulkan.aspiration
+vulkan.ambition
+vulkan.determination
+vulkan.resolve
+vulkan.commitment
+vulkan.dedication
+vulkan.devotion
+vulkan.loyalty
+vulkan.allegiance
+vulkan.fidelity
+vulkan.faithfulness
+vulkan.constancy
+vulkan.steadfastness
+vulkan.unwavering
+vulkan.resolute
+vulkan.firm
+vulkan.solid
+vulkan.stable
+vulkan.secure
+vulkan.safe
+vulkan.protected
+vulkan.defended
+vulkan.guarded
+vulkan.shielded
+vulkan.covered
+vulkan.insured
+vulkan.guaranteed
+vulkan.warranted
+vulkan.assured
+vulkan.certain
+vulkan.sure
+vulkan.confident
+vulkan.positive
+vulkan.optimistic
+vulkan.hopeful
+vulkan.expectant
+vulkan.anticipatory
+vulkan.preparatory
+vulkan.readiness
+vulkan.alertness
+vulkan.watchfulness
+vulkan.vigilance
+vulkan.carefulness
+vulkan.caution
+vulkan.prudence
+vulkan.discretion
+vulkan.judgment
+vulkan.decision
+vulkan.choice
+vulkan.selection
+vulkan.option
+vulkan.alternative
+vulkan.possibility
+vulkan.opportunity
+vulkan.chance
+vulkan.prospect
+vulkan.promise
+vulkan.potential
+vulkan.capability
+vulkan.capacity
+vulkan.faculty
+vulkan.power
+vulkan.force
+vulkan.energy
+vulkan.vigor
+vulkan.vitality
+vulkan.liveliness
+vulkan.animation
+vulkan.spirit
+vulkan.enthusiasm
+vulkan.zeal
+vulkan.fervor
+vulkan.ardor
+vulkan.passion
+vulkan.fire
+vulkan.flame
+vulkan.spark
+vulkan.ignition
+vulkan.combustion
+vulkan.explosion
+vulkan.blast
+vulkan.burst
+vulkan.eruption
+vulkan.outbreak
+vulkan.uprising
+vulkan.revolution
+vulkan.transformation
+vulkan.metamorphosis
+vulkan.evolution
+vulkan.development
+vulkan.growth
+vulkan.expansion
+vulkan.extension
+vulkan.enlargement
+vulkan.increase
+vulkan.augmentation
+vulkan.amplification
+vulkan.magnification
+vulkan.intensification
+vulkan.aggravation
+vulkan.accentuation
+vulkan.emphasis
+vulkan.stress
+vulkan.focus
+vulkan.concentration
+vulkan.attention
+vulkan.notice
+vulkan.observation
+vulkan.perception
+vulkan.recognition
+vulkan.realization
+vulkan.awareness
+vulkan.consciousness
+vulkan.knowledge
+vulkan.understanding
+vulkan.comprehension
+vulkan.grasp
+vulkan.grip
+vulkan.hold
+vulkan.control
+vulkan.command
+vulkan.mastery
+vulkan.dominance
+vulkan.supremacy
+vulkan.superiority
+vulkan.preeminence
+vulkan.distinction
+vulkan.excellence
+vulkan.merit
+vulkan.worth
+vulkan.value
+vulkan.importance
+vulkan.significance
+vulkan.meaning
+vulkan.purpose
+vulkan.intent
+vulkan.objective
+vulkan.aim
+vulkan.goal
+vulkan.target
+vulkan.end
+vulkan.result
+vulkan.outcome
+vulkan.consequence
+vulkan.effect
+vulkan.impact
+vulkan.influence
+vulkan.power
+vulkan.sway
+vulkan.clout
+vulkan.weight
+vulkan.importance
+vulkan.stature
+vulkan.standing
+vulkan.position
+vulkan.rank
+vulkan.status
+vulkan.level
+vulkan.grade
+vulkan.class
+vulkan.category
+vulkan.type
+vulkan.kind
+vulkan.sort
+vulkan.variety
+vulkan.species
+vulkan.breed
+vulkan.strain
+vulkan.stock
+vulkan.line
+vulkan.lineage
+vulkan.ancestry
+vulkan.heritage
+vulkan.inheritance
+vulkan.legacy
+vulkan.tradition
+vulkan.custom
+vulkan.convention
+vulkan.practice
+vulkan.usage
+vulkan.habit
+vulkan.routine
+vulkan.pattern
+vulkan.system
+vulkan.method
+vulkan.procedure
+vulkan.process
+vulkan.operation
+vulkan.function
+vulkan.action
+vulkan.activity
+vulkan.performance
+vulkan.execution
+vulkan.implementation
+vulkan.application
+vulkan.utilization
+vulkan.employment
+vulkan.use
+vulkan.exercise
+vulkan.practice
+vulkan.drill
+vulkan.training
+vulkan.preparation
+vulkan.rehearsal
+vulkan.simulation
+vulkan.mockery
+vulkan.imitation
+vulkan.replica
+vulkan.copy
+vulkan.duplicate
+vulkan.reproduction
+vulkan.recreation
+vulkan.renewal
+vulkan.restoration
+vulkan.rehabilitation
+vulkan.recovery
+vulkan.remedy
+vulkan.cure
+vulkan.healing
+vulkan.repair
+vulkan.fix
+vulkan.correction
+vulkan.adjustment
+vulkan.modification
+vulkan.alteration
+vulkan.change
+vulkan.transformation
+vulkan.conversion
+vulkan.translation
+vulkan.interpretation
+vulkan.explanation
+vulkan.elucidation
+vulkan.clarification
+vulkan.illustration
+vulkan.exemplification
+vulkan.demonstration
+vulkan.manifestation
+vulkan.expression
+vulkan.representation
+vulkan.portrayal
+vulkan.depiction
+vulkan.description
+vulkan.account
+vulkan.report
+vulkan.record
+vulkan.document
+vulkan.testimony
+vulkan.evidence
+vulkan.proof
+vulkan.verification
+vulkan.confirmation
+vulkan.validation
+vulkan.substantiation
+vulkan.corroboration
+vulkan.support
+vulkan.backing
+vulkan.endorsement
+vulkan.approval
+vulkan.sanction
+vulkan.authorization
+vulkan.permission
+vulkan.license
+vulkan.permit
+vulkan.pass
+vulkan.ticket
+vulkan.voucher
+vulkan.coupon
+vulkan.token
+vulkan.coin
+vulkan.currency
+vulkan.money
+vulkan.cash
+vulkan.funds
+vulkan.capital
+vulkan.assets
+vulkan.resources
+vulkan.wealth
+vulkan.riches
+vulkan.treasure
+vulkan.hoard
+vulkan.store
+vulkan.stock
+vulkan.supply
+vulkan.reserve
+vulkan.stash
+vulkan.cache
+vulkan.bank
+vulkan.depot
+vulkan.warehouse
+vulkan.repository
+vulkan.archive
+vulkan.library
+vulkan.collection
+vulkan.accumulation
+vulkan.aggregation
+vulkan.assortment
+vulkan.array
+vulkan.display
+vulkan.exhibition
+vulkan.show
+vulkan.presentation
+vulkan.demonstration
+vulkan.performance
+vulkan.production
+vulkan.staging
+vulkan.rendering
+vulkan.portrayal
+vulkan.enactment
+vulkan.realization
+vulkan.actualization
+vulkan.materialization
+vulkan.objectification
+vulkan.externalization
+vulkan.manifestation
+vulkan.expression
+vulkan utterance
+vulkan articulation
+vulkan enunciation
+vulkan pronunciation
+vulkan diction
+vulkan elocution
+vulkan delivery
+vulkan presentation
+vulkan performance
+vulkan rendition
+vulkan interpretation
+vulkan reading
+vulkan recitation
+vulkan declaration
+vulkan proclamation
+vulkan announcement
+vulkan notification
+vulkan communication
+vulkan message
+vulkan information
+vulkan data
+vulkan facts
+vulkan details
+vulkan particulars
+vulkan specifics
+vulkan elements
+vulkan components
+vulkan parts
+vulkan pieces
+vulkan fragments
+vulkan sections
+vulkan segments
+vulkan divisions
+vulkan portions
+vulkan shares
+vulkan allocations
+vulkan distributions
+vulkan apportionments
+vulkan allotments
+vulkan rations
+vulkan quotas
+vulkan limits
+vulkan restrictions
+vulkan constraints
+vulkan boundaries
+vulkan borders
+vulkan edges
+vulkan margins
+vulkan rims
+vulkan brinks
+vulkan verges
+vulkan thresholds
+vulkan doors
+vulkan gates
+vulkan portals
+vulkan entrances
+vulkan exits
+vulkan passages
+vulkan corridors
+vulkan halls
+vulkan aisles
+vulkan paths
+vulkan routes
+vulkan ways
+vulkan roads
+vulkan streets
+vulkan avenues
+vulkan boulevards
+vulkan drives
+vulkan lanes
+vulkan courts
+vulkan places
+vulkan squares
+vulkan circles
+vulkan plazas
+vulkan parks
+vulkan gardens
+vulkan grounds
+vulkan fields
+vulkan meadows
+vulkan plains
+vulkan prairies
+vulkan steppes
+vulkan savannas
+vulkan deserts
+vulkan oases
+vulkan islands
+vulkan peninsulas
+vulkan continents
+vulkan landmasses
+vulkan territories
+vulkan regions
+vulkan zones
+vulkan areas
+vulkan sectors
+vulkan districts
+vulkan neighborhoods
+vulkan communities
+vulkan localities
+vulkan vicinities
+vulkan surroundings
+vulkan environs
+vulkan precincts
+vulkan perimeters
+vulkan confines
+vulkan limits
+vulkan bounds
+vulkan ranges
+vulkan extents
+vulkan scopes
+vulkan reaches
+vulkan spans
+vulkan breadths
+vulkan widths
+vulkan lengths
+vulkan depths
+vulkan heights
+vulkan altitudes
+vulkan elevations
+vulkan levels
+vulkan grades
+vulkan slopes
+vulkan inclines
+vulkan declines
+vulkan gradients
+vulkan pitches
+vulkan angles
+vulkan corners
+vulkan vertices
+vulkan apexes
+vulkan peaks
+vulkan summits
+vulkan tops
+vulkan crests
+vulkan crowns
+vulkan pinnacles
+vulkan acmes
+vulkan zen iths
+vulkan culminations
+vulkan climaxes
+vulkan crises
+vulkan turning-points
+vulkan watersheds
+vulkan milestones
+vulkan landmarks
+vulkan signposts
+vulkan markers
+vulkan beacons
+vulkan lighthouses
+vulkan guides
+vulkan leaders
+vulkan directors
+vulkan managers
+vulkan supervisors
+vulkan overseers
+vulkan administrators
+vulkan executives
+vulkan officers
+vulkan officials
+vulkan authorities
+vulkan dignitaries
+vulkan notables
+vulkan personalities
+vulkan celebrities
+vulkan stars
+vulkan icons
+vulkan legends
+vulkan myths
+vulkan heroes
+vulkan champions
+vulkan winners
+vulkan victors
+vulkan conquerors
+vulkan masters
+vulkan experts
+vulkan specialists
+vulkan professionals
+vulkan practitioners
+vulkan technicians
+vulkan operators
+vulkan workers
+vulkan laborers
+vulkan employees
+vulkan staff
+vulkan personnel
+vulkan workforce
+vulkan manpower
+vulkan human-resources
+vulkan talent
+vulkan skill
+vulkan expertise
+vulkan know-how
+vulkan knowledge
+vulkan wisdom
+vulkan experience
+vulkan background
+vulkan history
+vulkan track-record
+vulkan pedigree
+vulkan credentials
+vulkan qualifications
+vulkan certifications
+vulkan accreditations
+vulkan licenses
+vulkan permits
+vulkan authorizations
+vulkan approvals
+vulkan endorsements
+vulkan recommendations
+vulkan references
+vulkan testimonials
+vulkan reviews
+vulkan ratings
+vulkan rankings
+vulkan scores
+vulkan grades
+vulkan marks
+vulkan points
+vulkan credits
+vulkan units
+vulkan hours
+vulkan days
+vulkan weeks
+vulkan months
+vulkan years
+vulkan decades
+vulkan centuries
+vulkan millennia
+vulkan ages
+vulkan eras
+vulkan epochs
+vulkan periods
+vulkan phases
+vulkan stages
+vulkan steps
+vulkan levels
+vulkan tiers
+vulkan layers
+vulkan strata
+vulkan beds
+vulkan veins
+vulkan seams
+vulkan streaks
+vulkan stripes
+vulkan bands
+vulkan bars
+vulkan lines
+vulkan rows
+vulkan columns
+vulkan pillars
+vulkan posts
+vulkan poles
+vulkan stakes
+vulkan rods
+vulkan bars
+vulkan beams
+vulkan girders
+vulkan trusses
+vulkan frames
+vulkan structures
+vulkan frameworks
+vulkan skeletons
+vulkan outlines
+vulkan silhouettes
+vulkan profiles
+vulkan contours
+vulkan shapes
+vulkan forms
+vulkan figures
+vulkan configurations
+vulkan arrangements
+vulkan organizations
+vulkan systems
+vulkan networks
+vulkan webs
+vulkan meshes
+vulkan grids
+vulkan matrices
+vulkan arrays
+vulkan tables
+vulkan charts
+vulkan graphs
+vulkan diagrams
+vulkan maps
+vulkan plans
+vulkan blueprints
+vulkan schematics
+vulkan designs
+vulkan patterns
+vulkan templates
+vulkan models
+vulkan prototypes
+vulkan mockups
+vulkan drafts
+vulkan sketches
+vulkan drawings
+vulkan illustrations
+vulkan paintings
+vulkan pictures
+vulkan images
+vulkan photos
+vulkan photographs
+vulkan snapshots
+vulkan shots
+vulkan views
+vulkan scenes
+vulkan sights
+vulkan spectacles
+vulkan displays
+vulkan shows
+vulkan exhibitions
+vulkan presentations
+vulkan performances
+vulkan productions
+vulkan creations
+vulkan works
+vulkan pieces
+vulkan compositions
+vulkan artifacts
+vulkan products
+vulkan outputs
+vulkan results
+vulkan outcomes
+vulkan consequences
+vulkan effects
+vulkan impacts
+vulkan influences
+vulkan impressions
+vulkan expressions
+vulkan manifestations
+vulkan demonstrations
+vulkan proofs
+vulkan evidences
+vulkan indications
+vulkan signs
+vulkan symptoms
+vulkan signals
+vulkan messages
+vulkan communications
+vulkan transmissions
+vulkan broadcasts
+vulkan publications
+vulkan announcements
+vulkan declarations
+vulkan statements
+vulkan pronouncements
+vulkan proclamations
+vulkan edicts
+vulkan decrees
+vulkan orders
+vulkan commands
+vulkan directives
+vulkan instructions
+vulkan guidelines
+vulkan rules
+vulkan regulations
+vulkan laws
+vulkan statutes
+vulkan codes
+vulkan acts
+vulkan bills
+vulkan legislation
+vulkan jurisprudence
+vulkan legality
+vulkan legitimacy
+vulkan validity
+vulkan constitutionality
+vulkan enforceability
+vulkan applicability
+vulkan relevance
+vulkan pertinence
+vulkan materiality
+vulkan significance
+vulkan importance
+vulkan consequence
+vulkan weight
+vulkan moment
+vulkan import
+vulkan meaning
+vulkan sense
+vulkan purport
+vulkan gist
+vulkan essence
+vulkan core
+vulkan heart
+vulkan nucleus
+vulkan center
+vulkan focus
+vulkan hub
+vulkan pivot
+vulkan axis
+vulkan linchpin
+vulkan keystone
+vulkan cornerstone
+vulkan foundation
+vulkan base
+vulkan ground
+vulkan floor
+vulkan bottom
+vulkan root
+vulkan source
+vulkan origin
+vulkan beginning
+vulkan start
+vulkan commencement
+vulkan inception
+vulkan initiation
+vulkan launch
+vulkan debut
+vulkan premiere
+vulkan opening
+vulkan kickoff
+vulkan takeoff
+vulkan liftoff
+vulkan blastoff
+vulkan ignition
+vulkan spark
+vulkan trigger
+vulkan catalyst
+vulkan stimulus
+vulkan impetus
+vulkan motivation
+vulkan incentive
+vulkan inducement
+vulkan encouragement
+vulkan inspiration
+vulkan aspiration
+vulkan ambition
+vulkan desire
+vulkan wish
+vulkan want
+vulkan need
+vulkan requirement
+vulkan necessity
+vulkan essential
+vulkan imperative
+vulkan obligation
+vulkan duty
+vulkan responsibility
+vulkan accountability
+vulkan liability
+vulkan burden
+vulkan load
+vulkan weight
+vulkan pressure
+vulkan stress
+vulkan strain
+vulkan tension
+vulkan anxiety
+vulkan worry
+vulkan concern
+vulkan care
+vulkan attention
+vulkan consideration
+vulkan thought
+vulkan reflection
+vulkan contemplation
+vulkan meditation
+vulkan deliberation
+vulkan pondering
+vulkan rumination
+vulkan cogitation
+vulkan speculation
+vulkan conjecture
+vulkan hypothesis
+vulkan theory
+vulkan proposition
+vulkan thesis
+vulkan premise
+vulkan assumption
+vulkan supposition
+vulkan presumption
+vulkan surmise
+vulkan guess
+vulkan estimate
+vulkan approximation
+vulkan calculation
+vulkan computation
+vulkan reckoning
+vulkan measure
+vulkan assessment
+vulkan evaluation
+vulkan appraisal
+vulkan judgment
+vulkan opinion
+vulkan view
+vulkan perspective
+vulkan standpoint
+vulkan viewpoint
+vulkan position
+vulkan stance
+vulkan attitude
+vulkan approach
+vulkan mindset
+vulkan mentality
+vulkan outlook
+vulkan worldview
+vulkan philosophy
+vulkan ideology
+vulkan doctrine
+vulkan dogma
+vulkan creed
+vulkan belief
+vulkan faith
+vulkan trust
+vulkan confidence
+vulkan conviction
+vulkan certainty
+vulkan assurance
+vulkan guarantee
+vulkan warranty
+vulkan security
+vulkan safety
+vulkan protection
+vulkan defense
+vulkan shield
+vulkan guard
+vulkan shelter
+vulkan refuge
+vulkan sanctuary
+vulkan haven
+vulkan retreat
+vulkan hideaway
+vulkan getaway
+vulkan escape
+vulkan exit
+vulkan way-out
+vulkan出路

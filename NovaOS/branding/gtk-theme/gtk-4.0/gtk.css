@@ -1,0 +1,416 @@
+# NovaOS GTK Theme
+# Modern, Windows 11-inspired theme with rounded corners and smooth animations
+
+@define-color nova_primary #6c63ff;
+@define-color nova_primary_dark #5a52d5;
+@define-color nova_primary_light #8f87ff;
+@define-color nova_accent #00d4ff;
+@define-color nova_accent_dark #00b8e6;
+@define-color nova_background #0a0a12;
+@define-color nova_surface #16161e;
+@define-color nova_surface_light #1f1f2e;
+@define-color nova_error #ff5252;
+@define-color nova_success #4caf50;
+@define-color nova_warning #ff9800;
+@define-color nova_info #2196f3;
+
+/* Window styling */
+window {
+    background-color: @nova_background;
+    color: #ffffff;
+    border-radius: 12px;
+}
+
+window.background {
+    background-color: @nova_background;
+}
+
+/* Header bars */
+headerbar {
+    background: linear-gradient(135deg, @nova_surface_light, @nova_surface);
+    color: #ffffff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 8px 12px;
+    min-height: 46px;
+}
+
+headerbar.titlebar {
+    border-radius: 12px 12px 0 0;
+}
+
+headerbar button {
+    color: #ffffff;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 12px;
+    min-height: 32px;
+}
+
+headerbar button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+headerbar button:active {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Window controls */
+.window-buttons button {
+    min-width: 28px;
+    min-height: 28px;
+    padding: 0;
+    margin: 0 2px;
+    border-radius: 50%;
+}
+
+.window-buttons button.close {
+    background: @nova_error;
+    color: white;
+}
+
+.window-buttons button.close:hover {
+    background: #ff7676;
+}
+
+.window-buttons button.maximize {
+    background: @nova_success;
+    color: white;
+}
+
+.window-buttons button.maximize:hover {
+    background: #66bb6a;
+}
+
+.window-buttons button.minimize {
+    background: @nova_warning;
+    color: white;
+}
+
+.window-buttons button.minimize:hover {
+    background: #ffb74d;
+}
+
+/* Buttons */
+button {
+    background: linear-gradient(135deg, @nova_primary_light, @nova_primary);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-weight: 500;
+    box-shadow: 0 2px 8px rgba(108, 99, 255, 0.3);
+}
+
+button:hover {
+    background: linear-gradient(135deg, @nova_primary, @nova_primary_dark);
+    box-shadow: 0 4px 12px rgba(108, 99, 255, 0.4);
+}
+
+button:active {
+    background: @nova_primary_dark;
+    box-shadow: 0 1px 4px rgba(108, 99, 255, 0.3);
+}
+
+button:disabled {
+    background: @nova_surface_light;
+    color: rgba(255, 255, 255, 0.4);
+    box-shadow: none;
+}
+
+button.suggested-action {
+    background: linear-gradient(135deg, @nova_accent, @nova_accent_dark);
+    box-shadow: 0 2px 8px rgba(0, 212, 255, 0.3);
+}
+
+button.destructive-action {
+    background: linear-gradient(135deg, @nova_error, #d32f2f);
+    box-shadow: 0 2px 8px rgba(255, 82, 82, 0.3);
+}
+
+/* Entries / Text fields */
+entry {
+    background: @nova_surface;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 8px 12px;
+    color: #ffffff;
+    caret-color: @nova_accent;
+}
+
+entry:focus {
+    border-color: @nova_primary;
+    box-shadow: 0 0 0 2px rgba(108, 99, 255, 0.2);
+}
+
+entry:disabled {
+    background: @nova_surface_light;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* Cards */
+.card {
+    background: @nova_surface;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 16px;
+}
+
+.card:hover {
+    background: @nova_surface_light;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Lists */
+list {
+    background: @nova_surface;
+    border-radius: 12px;
+}
+
+list row {
+    padding: 12px 16px;
+    background: transparent;
+}
+
+list row:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+list row:selected {
+    background: rgba(108, 99, 255, 0.3);
+    color: #ffffff;
+}
+
+/* Scrollbars */
+scrollbar {
+    background: transparent;
+}
+
+scrollbar slider {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    min-width: 8px;
+    min-height: 8px;
+}
+
+scrollbar slider:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Progress bars */
+progressbar progress {
+    background: linear-gradient(90deg, @nova_primary, @nova_accent);
+    border-radius: 4px;
+}
+
+progressbar trough {
+    background: @nova_surface;
+    border-radius: 4px;
+}
+
+/* Switches */
+switch {
+    background: @nova_surface_light;
+    border-radius: 16px;
+    min-width: 52px;
+    min-height: 32px;
+}
+
+switch:checked {
+    background: @nova_primary;
+}
+
+switch slider {
+    background: #ffffff;
+    border-radius: 50%;
+    margin: 4px;
+    min-width: 24px;
+    min-height: 24px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Checkboxes and Radio buttons */
+check, radio {
+    min-width: 20px;
+    min-height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    background: transparent;
+}
+
+check:checked, radio:checked {
+    background: @nova_primary;
+    border-color: @nova_primary;
+}
+
+radio, radio:checked {
+    border-radius: 50%;
+}
+
+/* Tooltips */
+tooltip {
+    background: @nova_surface_light;
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 8px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Menus */
+menu, .menu {
+    background: @nova_surface_light;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 8px;
+}
+
+menu menuitem, .menu menuitem {
+    padding: 8px 16px;
+    border-radius: 8px;
+    color: #ffffff;
+}
+
+menu menuitem:hover, .menu menuitem:hover {
+    background: rgba(108, 99, 255, 0.3);
+}
+
+/* Popovers */
+popover {
+    background: @nova_surface_light;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 8px;
+}
+
+/* Dialogs */
+dialog .dialog-action-area {
+    padding: 16px;
+    background: @nova_surface;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Sidebar */
+.sidebar {
+    background: @nova_surface;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sidebar row {
+    padding: 10px 16px;
+    border-radius: 8px;
+    margin: 2px 8px;
+}
+
+.sidebar row:selected {
+    background: rgba(108, 99, 255, 0.3);
+}
+
+/* Notebook / Tabs */
+notebook header {
+    background: @nova_surface;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+notebook tab {
+    padding: 8px 24px;
+    border: none;
+    border-radius: 8px 8px 0 0;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+notebook tab:checked {
+    background: @nova_surface_light;
+    color: #ffffff;
+}
+
+/* Scale / Slider */
+scale trough {
+    background: @nova_surface_light;
+    border-radius: 4px;
+    min-height: 4px;
+}
+
+scale highlight {
+    background: @nova_primary;
+    border-radius: 4px;
+}
+
+scale slider {
+    background: #ffffff;
+    border-radius: 50%;
+    min-width: 20px;
+    min-height: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Spinbuttons */
+spinbutton {
+    background: @nova_surface;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+spinbutton button {
+    background: transparent;
+    box-shadow: none;
+}
+
+spinbutton button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Frames */
+frame > border {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+}
+
+/* Separators */
+separator {
+    background: rgba(255, 255, 255, 0.1);
+    min-height: 1px;
+    min-width: 1px;
+}
+
+/* Status colors */
+.success {
+    color: @nova_success;
+}
+
+.warning {
+    color: @nova_warning;
+}
+
+.error {
+    color: @nova_error;
+}
+
+.info {
+    color: @nova_info;
+}
+
+/* Animations */
+@keyframes fade_in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slide_up {
+    from { 
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Apply animations */
+.window-open {
+    animation: slide_up 0.3s ease-out;
+}
+
+.fade-in {
+    animation: fade_in 0.2s ease-out;
+}

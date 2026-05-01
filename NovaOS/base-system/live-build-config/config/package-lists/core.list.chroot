@@ -1,0 +1,378 @@
+# NovaOS Core System Packages
+# Essential packages for base system functionality
+
+# Base system essentials
+systemd
+systemd-sysv
+dbus
+dbus-user-session
+dbus-x11
+udev
+login
+passwd
+sudo
+bash
+coreutils
+util-linux
+debian-archive-keyring
+ca-certificates
+gnupg
+apt
+apt-utils
+dpkg
+
+# Init system
+systemd-container
+systemd-timesyncd
+
+# Essential utilities
+less
+nano
+vim
+file
+gzip
+bzip2
+xz-utils
+tar
+cpio
+rsync
+wget
+curl
+lsb-release
+hostname
+net-tools
+iproute2
+dnsutils
+isc-dhcp-client
+wireless-tools
+wpasupplicant
+
+# Hardware detection and firmware
+firmware-linux-free
+firmware-linux-nonfree
+firmware-misc-nonfree
+firmware-realtek
+firmware-iwlwifi
+firmware-atheros
+firmware-brcm80211
+firmware-intel-sound
+firmware-sof-signed
+intel-microcode
+amd64-microcode
+
+# Filesystem support
+e2fsprogs
+e2fsprogs-l10n
+btrfs-progs
+xfsprogs
+dosfstools
+ntfs-3g
+exfat-fuse
+exfat-utils
+squashfs-tools
+lvm2
+mdadm
+cryptsetup
+cryptsetup-initramfs
+
+# Bootloader
+grub-pc
+grub-efi-amd64
+grub-efi-amd64-bin
+grub-common
+grub-gfxpayload-lists
+os-prober
+
+# Kernel (latest stable from backports)
+linux-image-amd64
+linux-headers-amd64
+
+# Initramfs tools
+initramfs-tools
+dracut-core
+
+# Network management
+network-manager
+network-manager-gnome
+modemmanager
+ppp
+pptp-linux
+openvpn
+openvpn-systemd-resolved
+
+# Sound system
+pulseaudio
+pulseaudio-utils
+pipewire
+pipewire-audio-client-libraries
+pipewire-bin
+pipewire-module-*
+wireplumber
+alsa-base
+alsa-utils
+alsa-firmware-loaders
+
+# Bluetooth
+bluez
+bluez-tools
+blueman
+
+# Printing
+cups
+cups-browsed
+cups-client
+cups-common
+cups-core-drivers
+cups-daemon
+cups-ppdc
+cups-systemd-upgrades
+foomatic-db-compressed-ppds
+hplip
+printer-driver-all
+
+# X11 and Wayland support
+xorg
+xserver-xorg
+xserver-xorg-video-all
+xserver-xorg-input-all
+xwayland
+libgl1-mesa-dri
+libglx-mesa0
+mesa-vulkan-drivers
+vulkan-tools
+
+# GPU drivers
+# NVIDIA (will be installed via nvidia-detect script)
+nvidia-detect
+# AMD/Intel - included in mesa packages above
+
+# Input devices
+xinput
+evtest
+
+# Power management
+upower
+powermgmt-base
+tlp
+tlp-rdw
+powertop
+
+# Battery monitoring
+acpi-support
+acpid
+
+# Thermal management
+thermald
+
+# Laptop support
+laptop-mode-tools
+laptop-detect
+
+# Hardware sensors
+lm-sensors
+hddtemp
+smartmontools
+
+# USB utilities
+usbutils
+usb_modeswitch
+usbmuxd
+
+# PCMCIA/Cardbus
+pcmciautils
+
+# Misc hardware
+fwupd
+fwupdate
+dmidecode
+pciutils
+inxi
+
+# Time and locale
+tzdata
+locales
+console-setup
+keyboard-configuration
+xkb-data
+
+# Fonts - essential
+fonts-dejavu-core
+fonts-dejavu-extra
+fonts-liberation
+fonts-noto-core
+fonts-noto-cjk
+fonts-noto-color-emoji
+fonts-symbola
+fonts-ubuntu
+
+# User management
+adduser
+accountsservice
+polkitd
+policykit-1
+
+# Session management
+xdg-user-dirs
+xdg-utils
+shared-mime-info
+mime-support
+desktop-file-utils
+menu
+
+# Display manager (LightDM)
+lightdm
+lightdm-gtk-greeter
+accountsservice
+
+# Security basics
+apparmor
+apparmor-profiles
+apparmor-utils
+auditd
+audispd-plugins
+libpam-modules
+libpam-runtime
+libpam-systemd
+
+# Firewall
+ufw
+iptables
+iptables-persistent
+
+# System logging
+rsyslog
+logrotate
+journalctl
+
+# Monitoring
+htop
+iotop
+iftop
+nmon
+sysstat
+procps
+
+# Backup basics
+timeshift
+rsync
+
+# Compression tools
+zip
+unzip
+p7zip-full
+p7zip-rar
+unar
+atool
+
+# Archive handling
+libarchive-tools
+
+# Text processing
+grep
+sed
+awk
+gawk
+findutils
+diffutils
+patch
+texinfo
+
+# Development basics (minimal)
+build-essential
+gcc
+g++
+make
+cmake
+pkg-config
+autoconf
+automake
+libtool
+binutils
+libc-dev
+libc6-dev
+
+# Python 3 (system scripts)
+python3
+python3-minimal
+python3-pip
+python3-setuptools
+python3-wheel
+python3-dbus
+python3-gi
+python3-apt
+
+# Shell utilities
+zsh
+fish
+compleat
+
+# Documentation
+man-db
+manpages
+manpages-posix
+manpages-posix-dev
+info
+doc-debian
+
+# Help system
+yelp
+yelp-xsl
+
+# Terminal emulators (backup)
+xterm
+gnome-terminal
+
+# Accessibility basics
+brltty
+speech-dispatcher
+speech-dispatcher-espeak
+espeak-ng
+espeak
+
+# Localization
+task-english
+language-pack-en
+language-pack-en-base
+language-selector-common
+
+# Task selection
+tasksel
+tasksel-data
+
+# Recommended packages
+command-not-found
+software-properties-common
+apt-transport-https
+gnupg-agent
+dirmngr
+keyboxd
+
+# Debugging tools (basic)
+strace
+ltrace
+gdb
+valgrind
+
+# Performance tools
+perf
+linux-perf
+
+# System recovery
+rescue
+sysrq-trigger
+
+# Miscellaneous essentials
+tree
+jq
+xmlstarlet
+xsltproc
+uuid-runtime
+lsblk
+blockdev
+parted
+gparted
+fdisk
+gdisk
+sg3-utils
+hdparm
+nvme-cli

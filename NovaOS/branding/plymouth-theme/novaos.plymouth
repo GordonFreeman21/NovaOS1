@@ -1,0 +1,90 @@
+# NovaOS Plymouth Boot Splash Theme
+# Animated boot screen with smooth transitions
+
+[Daemon]
+ShowDelay=false
+VerifyDriDevice=true
+
+[General]
+ShowSpinner=true
+Title=NovaOS
+UseFirmwareBackground=false
+
+[Animation]
+NumberOfFrames=30
+FrameRate=30
+TransitionDuration=500
+
+[Colors]
+Background=#0a0a12
+Primary=#6c63ff
+Accent=#00d4ff
+Text=#ffffff
+
+[Layout]
+LogoWidth=256
+LogoHeight=256
+TitleYAlign=0.7
+MessageYAlign=0.8
+ProgressBarYAlign=0.9
+ProgressBarWidth=0.5
+ProgressBarHeight=4
+
+[Effects]
+EnableFadeIn=true
+EnableFadeOut=true
+EnablePulse=true
+EnableGlow=true
+PulseSpeed=1.5
+GlowRadius=20
+GlowIntensity=0.5
+
+[Progress]
+UseBar=true
+BarStyle=gradient
+BarColorStart=#6c63ff
+BarColorEnd=#00d4ff
+BackgroundColor=#16161e
+BorderColor=#1f1f2e
+BorderWidth=0
+RoundedCorners=true
+CornerRadius=2
+
+[Text]
+TitleFont=Inter Bold 24
+MessageFont=Inter Regular 14
+TitleColor=#ffffff
+MessageColor=#cccccc
+ShadowEnabled=true
+ShadowColor=#000000
+ShadowOffsetX=0
+ShadowOffsetY=2
+ShadowBlur=4
+
+[Logo]
+Position=center
+ScaleMode=fit
+Opacity=1.0
+RotationSpeed=0
+PulseEnabled=true
+PulseMinScale=0.95
+PulseMaxScale=1.05
+PulseDuration=2000
+
+[Spinner]
+Enabled=true
+Type=circular
+Size=48
+Color=#6c63ff
+Speed=1.0
+Segments=12
+LineWidth=3
+
+[Messages]
+Boot="Starting NovaOS..."
+Loading="Loading system components..."
+Services="Starting services..."
+Desktop="Launching desktop environment..."
+Complete="Welcome to NovaOS"
+Update="Applying system updates..."
+Repair="Running system repair..."
