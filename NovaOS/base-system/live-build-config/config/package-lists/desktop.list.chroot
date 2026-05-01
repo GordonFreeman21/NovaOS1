@@ -1,0 +1,1769 @@
+# NovaOS Desktop Environment Packages
+# Complete desktop experience with applications
+
+# =============================================================================
+# NOVADE DESKTOP ENVIRONMENT (Custom packages - built from source)
+# These will be replaced by our custom-built .deb packages during build
+# =============================================================================
+# nova-compositor
+# nova-panel
+# nova-launcher
+# nova-settings
+# nova-notifications
+# nova-lockscreen
+# nova-greeter
+# nova-wm
+# nova-files
+# nova-terminal
+# nova-software
+# nova-monitor
+# nova-screenshot
+# nova-editor
+# nova-viewer
+# nova-player
+# nova-calculator
+# nova-backup
+# nova-welcome
+
+# =============================================================================
+# GTK4 and LibAdwaita (Required for NovaDe apps)
+# =============================================================================
+libgtk-4-1
+libgtk-4-bin
+libgtk-4-common
+libgtk-4-dev
+libgtk-4-media-gstreamer
+gir1.2-gtk-4.0
+libadwaita-1-0
+libadwaita-1-dev
+libadwaita-1-doc
+gir1.2-adw-1
+gnome-themes-extra
+gnome-themes-extra-data
+gnome-themes-standard
+
+# =============================================================================
+# Wayland Compositor Dependencies (for nova-compositor)
+# =============================================================================
+libwlroots11
+libwlroots-dev
+wayland-protocols
+libwayland-client0
+libwayland-server0
+libwayland-cursor0
+libwayland-egl1
+libwayland-dev
+libxkbcommon0
+libxkbcommon-dev
+xkb-data
+libpixman-1-0
+libpixman-1-dev
+libdrm2
+libdrm-dev
+libdrm-intel1
+libdrm-amdgpu1
+libdrm-nouveau2
+libdrm-radeon1
+libegl1
+libegl-mesa0
+libegl-dev
+libgles2
+libgles2-mesa-dev
+libgles1
+libgl1
+libgl1-mesa-dri
+libgl1-mesa-glx
+libglx-mesa0
+libglx-dev
+libgbm1
+libgbm-dev
+libinput10
+libinput-dev
+libinput-bin
+libudev1
+libudev-dev
+libseat1
+libseat-dev
+libdbus-1-3
+libdbus-1-dev
+libsystemd0
+libsystemd-dev
+libelogind0
+libelogind-dev
+libpam-systemd
+libpolkit-gobject-1-0
+libpolkit-agent-1-0
+libpolkit-gobject-1-dev
+libjson-glib-1-0
+libjson-glib-1-common
+libjson-glib-dev
+libcairo2
+libcairo2-dev
+libcairo-gobject2
+libpango-1.0-0
+libpango1.0-dev
+libpangocairo-1.0-0
+libpangoft2-1.0-0
+libharfbuzz0b
+libharfbuzz-dev
+libfreetype6
+libfreetype6-dev
+libfontconfig1
+libfontconfig1-dev
+libxcb1
+libxcb1-dev
+libxcb-render0
+libxcb-render0-dev
+libxcb-shape0
+libxcb-shape0-dev
+libxcb-xfixes0
+libxcb-xfixes0-dev
+libxcb-composite0
+libxcb-composite0-dev
+libxcb-image0
+libxcb-image0-dev
+libxcb-util1
+libxcb-randr0
+libxcb-randr0-dev
+libxcb-sync1
+libxcb-present0
+libxcb-xkb1
+libxcb-xkb-dev
+libxcb-cursor0
+libxcb-ewmh2
+libxcb-icccm4
+libxcb-keysyms1
+libxcb-render-util0
+libxcb-shm0
+libxcb-dri3-0
+libxcb-glx0
+libxcb-dri2-0
+libxcb-res0
+libxcvt0
+libxcvt-dev
+libxxf86vm1
+libxfixes3
+libxfixes-dev
+libxrender1
+libxrender-dev
+libxi6
+libxi-dev
+libxrandr2
+libxrandr-dev
+libxext6
+libxext-dev
+libx11-6
+libx11-xcb1
+libx11-dev
+libxcomposite1
+libxcomposite-dev
+libxdamage1
+libxdamage-dev
+libxkbfile1
+libxkbfile-dev
+libxmu6
+libxmuu1
+libxtst6
+libxtst-dev
+libxpresent1
+libxpresent-dev
+libxres1
+libxv1
+libxf86vidmode1
+meson
+ninja-build
+cmake
+pkg-config
+valac
+libvala-0.56-0
+libvala-0.56-dev
+valac-0.56-vapi
+rustc
+cargo
+librust-glib-0.17-dev
+librust-gtk4-dev
+librust-cairo-rs-dev
+librust-pango-dev
+git
+
+# =============================================================================
+# X11 Compatibility (XWayland)
+# =============================================================================
+xwayland
+xserver-xorg-core
+xserver-xorg-legacy
+x11-xkb-utils
+x11-xserver-utils
+xfonts-base
+xfonts-scalable
+xfonts-cyrillic
+xfonts-100dpi
+xfonts-75dpi
+xbitmaps
+x11-apps
+x11-session-utils
+x11-utils
+x11-xfs-utils
+xorg-docs-core
+xorg-sgml-doctools
+xtrans-dev
+libx11-data
+
+# =============================================================================
+# Icon Themes
+# =============================================================================
+adwaita-icon-theme
+adwaita-icon-theme-legacy
+hicolor-icon-theme
+breeze-icon-theme
+papirus-icon-theme
+yaru-icon-theme
+numix-icon-theme-square
+numix-icon-theme-circle
+
+# =============================================================================
+# Cursor Themes
+# =============================================================================
+adwaita-cursor-theme
+breeze-cursor-theme
+dmz-cursor-theme
+vanilla-dmz
+comix-cursors
+
+# =============================================================================
+# GTK Themes
+# =============================================================================
+adwaita-qt
+adwaita-qt5
+adwaita-qt6
+arc-theme
+greybird-gtk-theme
+shimmer-themes
+vertex-theme
+numix-gtk-theme
+radiance-gtk-theme
+ambiance-gtk-theme
+elementary-gtk-theme
+tweaks-support
+gnome-tweaks
+gnome-shell-extensions
+
+# =============================================================================
+# Display Manager (LightDM with custom greeter)
+# Already in core, adding additional components
+# =============================================================================
+lightdm-settings
+slick-greeter
+lightdm-gtk-greeter-settings
+
+# =============================================================================
+# Session Management
+# =============================================================================
+gnome-session-bin
+gnome-session-common
+gnome-session-canberra
+session-migration
+gnome-startup-applications
+
+# =============================================================================
+# Notification System
+# =============================================================================
+notification-daemon
+libnotify4
+libnotify-bin
+libnotify-dev
+gir1.2-notify-0.7
+dunst
+mako-compositor
+
+# =============================================================================
+# System Tray Support
+# =============================================================================
+sni-qt
+sni-qt:i386
+ayatana-indicator-application
+ayatana-indicator-sound
+ayatana-indicator-power
+ayatana-indicator-messages
+ayatana-indicator-datetime
+ayatana-indicator-keyboard
+ayatana-indicator-display
+ayatana-indicator-session
+
+# =============================================================================
+# Clipboard Manager
+# =============================================================================
+clipit
+parcellite
+greenclip
+
+# =============================================================================
+# Screenshot Tools (System-level)
+# =============================================================================
+gnome-screenshot
+flameshot
+maim
+scrot
+import-im6
+
+# =============================================================================
+# Screen Recording
+# =============================================================================
+simple-screencast
+obs-studio
+obs-plugins
+simplescreenrecorder
+kazam
+vokoscreen-ng
+
+# =============================================================================
+# Color Management
+# =============================================================================
+colord
+colord-data
+colord-gtk-common
+colord-gtk3
+libcolord2
+libcolord-gtk1
+icc-profiles-free
+
+# =============================================================================
+# Font Management
+# =============================================================================
+font-manager
+font-viewer
+fontconfig
+fontconfig-config
+libfontconfig1
+libfontconfig1-dev
+fonts-inconsolata
+fonts-firacode
+fonts-jetbrains-mono
+fonts-source-code-pro
+fonts-roboto
+fonts-open-sans
+fonts-lato
+fonts-cantarell
+fonts-quicksand
+fonts-montserrat
+fonts-poppins
+fonts-nunito
+fonts-work-sans
+fonts-inter
+ttf-mscorefonts-installer
+ttf-bitstream-vera
+ttf-dejavu
+ttf-aenigma
+ttf-ancient-fonts
+ttf-engadget
+ttf-sjfonts
+
+# =============================================================================
+# Input Methods
+# =============================================================================
+ibus
+ibus-gtk
+ibus-gtk3
+ibus-gtk4
+ibus-table
+ibus-anthy
+ibus-hangul
+ibus-mozc
+ibus-libpinyin
+ibus-table-wubi
+ibus-table-wbpy
+fcitx5
+fcitx5-module-dbus
+fcitx5-module-kcm
+fcitx5-module-lua
+fcitx5-module-memconf
+fcitx5-module-quickphrase-editor5
+fcitx5-chinese-addons
+fcitx5-korean-addons
+fcitx5-japanese-addons
+fcitx5-table-other
+fcitx5-ui-classic
+fcitx5-configtool
+fcitx5-frontend-gtk3
+fcitx5-frontend-gtk4
+fcitx5-frontend-qt5
+im-config
+
+# =============================================================================
+# Accessibility
+# =============================================================================
+orca
+at-spi2-core
+at-spi2-common
+libatspi2.0-0
+libatk1.0-0
+libatk-adaptor
+libatk-bridge2.0-0
+brltty-x11
+brltty-espeak
+brltty-flite
+gnome-orca
+onboard
+onboard-data
+caribou
+mousetweaks
+highcontrast
+gnome-accessibility-themes
+
+# =============================================================================
+# Search and Indexing
+# =============================================================================
+tracker
+tracker-miner-fs
+tracker-extract
+tracker-miner-rss
+libtracker-sparql-3.0-0
+libtracker-control-3.0-0
+baloo-kf5
+baloo-widgets
+recoll
+recoll-l10n
+catdoc
+antiword
+poppler-utils
+djvulibre-desktop
+tesseract-ocr-all
+libtesseract-dev
+
+# =============================================================================
+# Power Management GUI
+# =============================================================================
+gnome-power-manager
+power-profiles-daemon
+cpufrequtils
+indicator-cpufreq
+
+# =============================================================================
+# Network Manager Applets
+# =============================================================================
+network-manager-gnome
+network-manager-openvpn
+network-manager-openvpn-gnome
+network-manager-pptp
+network-manager-pptp-gnome
+network-manager-l2tp
+network-manager-l2tp-gnome
+network-manager-strongswan
+network-manager-vpnc
+network-manager-vpnc-gnome
+network-manager-iodine
+network-manager-iodine-gnome
+
+# =============================================================================
+# Bluetooth Management
+# =============================================================================
+blueman
+blueberry
+gnome-bluetooth-3-common
+libbluetooth3
+libbluetooth-dev
+
+# =============================================================================
+# Volume Control
+# =============================================================================
+pavucontrol
+pulseaudio-module-bluetooth
+pulseaudio-module-network-server
+pulseaudio-module-zeroconf
+pipewire-module-filter-chain
+easyeffects
+qpwgraph
+helvum
+
+# =============================================================================
+# Disk Management
+# =============================================================================
+gnome-disk-utility
+udisks2
+udisks2-doc
+libudisks2-0
+udisks2-btrfs
+udisks2-lvm2
+udisks2-zram
+udisks2-iscsi
+udisks2-bcache
+udisks2-lvm
+udisks2-ntfs
+
+# =============================================================================
+# User Account Management
+# =============================================================================
+gnome-control-center
+gnome-control-center-data
+gnome-control-center-faces
+system-config-printer-common
+system-config-printer-udev
+users-admin
+gksu
+gksu-polkit
+
+# =============================================================================
+# Login Screen (GDM alternative with LightDM)
+# =============================================================================
+lightdm
+lightdm-gtk-greeter
+plymouth
+plymouth-themes
+plymouth-label
+plymouth-x11
+
+# =============================================================================
+# Boot Splash
+# =============================================================================
+usplash
+fbsplash
+
+# =============================================================================
+# Desktop Widgets
+# =============================================================================
+conky
+conky-all
+conky-manager
+screenlets
+screenlets-pack-all
+my-weather-indicator
+indicator-stickynotes
+
+# =============================================================================
+# Dock (Optional alternative to panel)
+# =============================================================================
+plank
+docky
+latte-dock
+
+# =============================================================================
+# Application Menu
+# =============================================================================
+alacarte
+menulibre
+whiskermenu
+slingscold
+kupfer
+synapse
+
+# =============================================================================
+# File Association
+# =============================================================================
+run-mailcap
+mime-support
+shared-mime-info
+xdg-utils
+xdg-user-dirs-gtk
+
+# =============================================================================
+# Trash Management
+# =============================================================================
+trash-cli
+gvfs-bin
+gvfs-backends
+gvfs-fuse
+gvfs-libs
+
+# =============================================================================
+# Mount Management
+# =============================================================================
+pmount
+udisks2
+usbmount
+ivman
+hal
+
+# =============================================================================
+# Remote Desktop
+# =============================================================================
+gnome-remote-desktop
+xrdp
+xorgxrdp
+remmina
+remmina-plugin-rdp
+remmina-plugin-vnc
+remmina-plugin-secret
+remmina-plugin-spice
+remmina-plugin-www
+remmina-plugin-x2go
+vinagre
+tigervnc-viewer
+tigervnc-common
+tightvncviewer
+
+# =============================================================================
+# Virtualization Support (Desktop)
+# =============================================================================
+virt-manager
+virt-viewer
+spice-client-gtk
+spice-client-glib-2.0-8
+qemu-system-x86
+qemu-system-gui
+qemu-block-extra
+libvirt-clients
+libvirt-daemon-system
+libvirt-glib-1.0-0
+
+# =============================================================================
+# Container Support
+# =============================================================================
+flatpak
+gnome-software-plugin-flatpak
+flatpak-builder
+snapd
+snap-store
+ubuntu-snappy
+linux-snapd
+
+# =============================================================================
+# Wine Support
+# =============================================================================
+wine
+wine64
+wine32
+winehq-stable
+winetricks
+cabextract
+genisoimage
+icoutils
+libwine
+libwine-development
+
+# =============================================================================
+# Proton/Steam Gaming
+# Will be in gaming package list
+# =============================================================================
+
+# =============================================================================
+# Documentation Viewer
+# =============================================================================
+evince
+evince-common
+evince-synctex
+djview4
+okular
+okular-extra-backends
+libkate1
+libkf5okularcore9
+
+# =============================================================================
+# Archive Manager
+# =============================================================================
+file-roller
+nautilus-extension-gnome-terminal
+engrampa
+thunar-archive-plugin
+xarchiver
+ark
+
+# =============================================================================
+# Text Utilities
+# =============================================================================
+translate-shell
+dict
+dict-freedict-eng-deu
+dict-freedict-deu-eng
+sdcv
+goldendict
+goldenDict
+
+# =============================================================================
+# Calculator
+# =============================================================================
+galculator
+qalculate-gtk
+speedcrunch
+gnome-calculator
+
+# =============================================================================
+# Calendar/Clock
+# =============================================================================
+gnome-calendar
+rainlendar2
+calcurse
+taskwarrior
+
+# =============================================================================
+# Weather
+# =============================================================================
+gnome-weather
+forecast-icons
+
+# =============================================================================
+# Maps
+# =============================================================================
+gnome-maps
+marble
+marble-data
+marble-qt
+
+# =============================================================================
+# Photos
+# =============================================================================
+gthumb
+gthumb-data
+shotwell
+shotwell-common
+digikam
+darktable
+rawtherapee
+
+# =============================================================================
+# Music
+# =============================================================================
+rhythmbox
+rhythmbox-data
+rhythmbox-plugin-alternative-toolbar
+rhythmbox-plugins
+lollypop
+clementine
+audacious
+audacious-plugins
+qmmp
+sayonara-player
+
+# =============================================================================
+# Video Players
+# =============================================================================
+vlc
+vlc-bin
+vlc-data
+vlc-plugin-base
+vlc-plugin-video-output
+vlc-l10n
+mpv
+mplayer
+smplayer
+smplayer-themes
+smplayer-translations
+celluloid
+gnome-mpv
+dragonplayer
+kaffeine
+
+# =============================================================================
+# Office Suite
+# =============================================================================
+libreoffice
+libreoffice-common
+libreoffice-core
+libreoffice-writer
+libreoffice-calc
+libreoffice-impress
+libreoffice-draw
+libreoffice-math
+libreoffice-base
+libreoffice-base-core
+libreoffice-base-drivers
+libreoffice-help-en-us
+libreoffice-help-en-gb
+libreoffice-l10n-en-us
+libreoffice-l10n-en-gb
+libreoffice-style-colibre
+libreoffice-style-elementary
+libreoffice-gnome
+libreoffice-gtk3
+libreoffice-pdfimport
+libreoffice-report-builder
+libreoffice-script-provider-python
+libreoffice-sdbc-firebird
+libreoffice-sdbc-hsqldb
+libreoffice-sdbc-postgresql
+libreoffice-java-common
+libreoffice-nlpsolver
+libreoffice-wiki-publisher
+libreoffice-evolution
+libreoffice-plasma
+fonts-liberation
+fonts-liberation2
+fonts-linuxlibertine
+hyphen-en-us
+hyphen-en-gb
+mythes-en
+mythes-en-us
+mythes-en-gb
+hunspell-en-us
+hunspell-en-gb
+hunspell-en-au
+hunspell-en-ca
+hunspell-en-za
+libreoffice-dictionaries
+libreoffice-help-common
+libreoffice-help-it
+libreoffice-help-fr
+libreoffice-help-de
+libreoffice-help-es
+libreoffice-help-pt
+libreoffice-help-ru
+libreoffice-help-zh-cn
+libreoffice-help-zh-tw
+libreoffice-help-ja
+libreoffice-help-ko
+libreoffice-help-hi
+
+# Alternative office
+onlyoffice-desktopeditors
+wps-office
+wps-office-l10n-en-us
+
+# PDF tools
+pdfarranger
+pdfmod
+pdfsam
+pdf-tools
+qpdfview
+qpdfview-pdf
+qpdfview-ps
+qpdfview-djvu
+masterpdfeditor
+foxitreader
+
+# =============================================================================
+# Web Browsers
+# =============================================================================
+firefox-esr
+firefox-esr-l10n-en-us
+firefox-esr-l10n-en-gb
+firefox-locale-en
+chromium
+chromium-driver
+chromium-l10n
+google-chrome-stable
+brave-browser
+microsoft-edge-stable
+tor-browser
+waterfox
+
+# Browser extensions support
+webext-ublock-origin
+webext-https-everywhere
+webext-privacy-badger
+webext-decentraleyes
+webext-greasemonkey
+webext-violentmonkey
+
+# =============================================================================
+# Email Client
+# =============================================================================
+thunderbird
+thunderbird-l10n-en-us
+thunderbird-l10n-en-gb
+thunderbird-plugin-lightning
+geary
+sylpheed
+claws-mail
+claws-mail-plugins
+evolution
+evolution-plugins
+evolution-data-server
+evolution-ews
+
+# =============================================================================
+# Chat/Messaging
+# =============================================================================
+pidgin
+pidgin-data
+pidgin-libnotify
+pidgin-otr
+pidgin-extprefs
+telegram-desktop
+whatsapp-for-linux
+discord
+slack-desktop
+skypeforlinux
+zoom
+teams
+element-desktop
+fractal
+hexchat
+konversation
+quassel
+quassel-client
+
+# =============================================================================
+# Terminal Emulators
+# =============================================================================
+gnome-terminal
+tilix
+terminator
+sakura
+xfce4-terminal
+kitty
+alacritty
+wezterm
+foot
+stterm
+urxvt
+rxvt-unicode
+rxvt-unicode-256color
+mlterm
+qterminal
+guake
+dropbox
+
+# =============================================================================
+# Code Editors / IDEs
+# =============================================================================
+code
+visual-studio-code
+sublime-text
+atom
+notepadqq
+gedit
+gedit-plugins
+gedit-developer-plugins
+mousepad
+leafpad
+kate
+kwrite
+nano
+vim
+vim-gtk3
+neovim
+emacs
+emacs-nox
+emacs-el
+emacs-goodies-el
+micro
+hx
+lapce
+zed
+
+# =============================================================================
+# Development Tools
+# =============================================================================
+git
+git-all
+git-gui
+gitk
+git-lfs
+git-email
+git-doc
+gh
+hub
+tig
+meld
+diffmerge
+kompare
+kdiff3
+vimdiff
+colordiff
+git-delta
+jq
+yq
+xmlstarlet
+xpath
+xsltproc
+httpie
+curl
+wget
+aria2
+axel
+
+# Compilers
+gcc
+g++
+gfortran
+clang
+clang-format
+clang-tidy
+lld
+lldb
+cmake
+make
+ninja-build
+meson
+autotools-dev
+autoconf
+automake
+libtool
+pkg-config
+
+# Debuggers
+gdb
+gdb-multiarch
+gdb-doc
+valgrind
+valgrind-dbg
+strace
+ltrace
+sysprof
+perf
+
+# Version control
+svn
+mercurial
+bzr
+fossil
+p4
+
+# Build systems
+gradle
+maven
+ant
+ivy
+sbt
+leiningen
+cargo
+rustc
+rust-doc
+rust-src
+rust-lldb
+rust-gdb
+
+# Python development
+python3-all
+python3-all-dev
+python3-pip
+python3-setuptools
+python3-wheel
+python3-venv
+python3-virtualenv
+virtualenv
+python3-poetry
+ipython3
+ipython
+jupyter-notebook
+jupyterlab
+python3-jupyter-core
+python3-nbformat
+python3-nbconvert
+
+# Node.js development
+nodejs
+nodejs-doc
+npm
+yarn
+pnpm
+typescript
+ts-node
+nodemon
+
+# Ruby development
+ruby
+ruby-dev
+ruby-bundler
+rake
+rails
+irb
+
+# Go development
+golang-go
+golang-src
+golang-doc
+
+# Java development
+default-jdk
+default-jre
+openjdk-17-jdk
+openjdk-17-jre
+openjdk-11-jdk
+openjdk-11-jre
+maven
+gradle
+ant
+groovy
+kotlin
+clojure
+
+# PHP development
+php
+php-cli
+php-common
+php-dev
+php-pear
+php-json
+php-mbstring
+php-xml
+php-curl
+php-zip
+php-gd
+php-mysql
+php-pgsql
+php-sqlite3
+composer
+
+# Database tools
+sqlite3
+mysql-client
+postgresql-client
+mongodb-org-tools
+redis-tools
+dbeaver-ce
+mysql-workbench
+pgadmin4
+sequelpro
+
+# API testing
+postman
+insomnia
+hoppscotch
+
+# Container development
+docker.io
+docker-compose
+docker-buildx
+podman
+podman-docker
+buildah
+skopeo
+cri-o
+
+# Kubernetes
+kubectl
+kubernetes-client
+helm
+k9s
+
+# Cloud CLI tools
+awscli
+azure-cli
+google-cloud-sdk
+
+# Web development
+nginx
+apache2
+lighttpd
+haproxy
+traefik
+caddy
+
+# =============================================================================
+# Graphics Tools
+# =============================================================================
+gimp
+gimp-data
+gimp-plugin-registry
+gimp-data-extras
+gimp-dds
+inkscape
+inkscape-tutorials
+krita
+krita-data
+kolourpaint
+mypaint
+tuxpaint
+pinta
+photoflare
+darktable
+rawtherapee
+digiKam
+showfoto
+blender
+freecad
+openscad
+cura
+prusa-slicer
+meshmixer
+meshlab
+cloudcompare
+
+# =============================================================================
+# Audio Production
+# =============================================================================
+ardour
+audacity
+hydrogen
+hydrogen-drumkits
+lmms
+lmms-common
+musescore3
+musescore-general-soundfont
+zynaddsubfx
+calf-plugins
+caps
+tap-plugins
+swh-plugins
+mcp-plugins
+rev-plugins
+wolf-shaper
+guitarix
+guitarix-lv2
+rackarrack
+ams
+amsynth
+bristol
+fluidsynth
+qsynth
+qsampler
+patchage
+jalv
+lv2-plugins
+calf-plugins-lv2
+x42-plugins-lv2
+lsp-plugins-lv2
+zam-plugins-lv2
+mda-lv2
+obxd-lv2
+dexed-lv2
+helm
+
+# =============================================================================
+# Video Editing
+# =============================================================================
+kdenlive
+kdenlive-data
+openshot-qt
+pitivi
+olive-editor
+shotcut
+cinelerra
+flowblade
+avidemux
+avidemux-qt
+avidemux-plugins
+handbrake
+handbrake-gtk
+makemkv
+mkvtoolnix
+mkvtoolnix-gui
+ffmpegthumbnailer
+lossless-cut
+
+# =============================================================================
+# 3D Modeling
+# =============================================================================
+blender
+freecad
+freecad-doc
+openscad
+openscad-mcad
+cura
+prusaslicer
+meshlab
+cloudcompare
+artofillusion
+wings3d
+bryce
+
+# =============================================================================
+# CAD
+# =============================================================================
+freecad
+librecad
+qcad
+qcad-partslibrary
+solveSpace
+openscad
+blockcad
+
+# =============================================================================
+# Science & Education
+# =============================================================================
+stellarium
+stellarium-data
+celestia
+celestia-common
+celestia-data
+kstars
+kstars-data
+cartes-du-ciel
+gwc
+google-earth-pro-stable
+worldwind
+orsa
+kalzium
+step
+avogadro
+gchempaint
+gabedit
+jmol
+vesta
+diamond
+krakatoa
+geogebra
+geogebra-gnome
+cantor
+labplot
+qtiplot
+origin
+root-system
+root-system-bin
+root-system-core
+root-system-graf2d
+root-system-graf3d
+root-system-gui
+root-system-hist
+root-system-histfactory
+root-system-io
+root-system-math
+root-system-misc
+root-system-net
+root-system-proof
+root-system-roofit
+root-system-test
+root-system-tree
+
+# =============================================================================
+# Games (Basic)
+# =============================================================================
+gnome-games
+gnome-chess
+gnome-sudoku
+gnome-mines
+gnome-2048
+gnome-klotski
+gnome-mahjongg
+gnome-nibbles
+gnome-robots
+gnome-taquin
+gnome-tetravex
+aisleriot
+five-or-more
+four-in-a-row
+hoichess
+lightsoff
+quadrapassel
+reversi
+swell-foop
+tali
+hitori
+iagno
+pingus
+supertux
+supertuxkart
+warzone2100
+0ad
+0ad-data
+openra
+openmw
+openttd
+openttd-data
+freeciv-client-gtk
+freeciv-server
+teeworlds
+nexuiz
+xonotic
+alien-arena
+smokinguns
+tremulous
+ioquake3
+openarena
+cube2
+sauerbraten
+redeclipse
+assaultcube
+warmux
+frogatto
+secretchronicles
+childsplay
+gcompris
+gcompris-data
+gcompris-sound-en
+tuxmath
+tuxtype
+drgeo
+ktouch
+typingtutor
+gtypist
+mnemosyne
+anki
+stellarium
+celestia
+googleearth
+
+# Steam will be added in gaming section
+
+# =============================================================================
+# Emulators
+# =============================================================================
+retroarch
+retroarch-assets
+retroarch-content
+retroarch-shaders
+mednafen
+mednafen-server
+dosbox
+dosbox-staging
+scummvm
+scummvm-data
+dolphin-emu
+pcsx2
+ppsspp
+ppsspp-assets
+rpcs3
+citra-emu
+yuzu
+mgba-qt
+visualboyadvance-m
+desmume
+melonnds
+flycast
+xemu
+xenia
+kega-fusion
+higan
+ares
+sameboy
+bizhawk
+duckstation
+flycast
+mame
+mess
+uae
+fs-uae
+fs-uae-launcher
+amiberry
+vice
+x64
+x128
+xplus4
+xvic
+xpet
+xcbm2
+xcbm5x0
+xscpu64
+x64dtv
+x64sc
+xscpu64
+gx64
+gearboy
+gearcoleco
+geargrub
+gearboy
+gpsp
+gpSP
+mgba
+nanoboyadvance
+sameboy
+tanooki528
+temper
+mednafen-psx
+mednafen-pce
+mednafen-vb
+mednafen-wswan
+mednafen-ngp
+mednafen-gbe
+mednafen-sms
+mednafen-md
+mednafen-pce-fast
+mednafen-supergrafx
+mednafen-fb
+mednafen-lynx
+mednafen-bsnes
+mednafen-bsnes-jg
+mednafen-bsnes-beta
+mednafen-bsnes-hd
+flycast
+redream
+demul
+nullDC
+triforce
+chihiro
+naomi
+model2
+model3
+supermodel
+lindbergh
+ringedge
+ringwide
+nuvee
+apricot
+applewin
+gsplus
+kegs
+orthodox
+simh
+mame
+mess
+ugrid
+xmame
+sdlemame
+rmame
+imame
+nemesis
+fba
+fbneo
+fbalpha
+fbzx
+fuse
+fuse-emulator-common
+fuse-emulator-utils
+spectacled
+zxspin
+rzxwatch
+gambatte
+visualboyadvance-m
+vbam
+kgb
+boycottadvance
+gp2x
+gp2xmenu
+dingux
+pandora
+pyra
+odroid
+gamestick
+shield
+steamlink
+retrostone
+picade
+gbap4
+rg350
+powkiddy
+anbernic
+retrogame
+clockwork
+ayn
+gpd
+onexplayer
+steamdeck
+framework
+pinephone
+librem5
+postmarketos
+mobian
+maemo
+meego
+sailfishos
+ubuntu-touch
+halium
+lomiri
+phosh
+plasma-mobile
+maui
+cutefish
+beautyeye
+deepin
+uos
+kylin
+redox
+haiku
+menuet
+kolibrios
+toaru
+serenityos
+visopsys
+reactos
+freedos
+msdos
+cpm
+minix
+plan9
+inferno
+helenos
+sphinx
+morphos
+aros
+amigaos
+workbench
+directoryopus
+scalos
+ambient
+magellan
+warp3d
+cybergfx
+rexx
+arexx
+datatypes
+multiview
+workbench
+shell
+system
+utilities
+games
+demos
+music
+movies
+pictures
+documents
+archives
+fonts
+icons
+themes
+skins
+wallpapers
+screensavers
+bootloaders
+kernels
+modules
+drivers
+firmware
+bios
+uefi
+boot
+efi
+grub
+syslinux
+isolinux
+pxelinux
+memtest
+kernel
+initrd
+initramfs
+squashfs
+filesystem
+partition
+bootloader
+installer
+live
+persistent
+encrypted
+compressed
+mounted
+iso
+img
+usb
+hdd
+ssd
+nvme
+sd
+mmc
+cf
+ms
+sm
+xd
+ CompactFlash
+ SecureDigital
+ MultiMediaCard
+ MemoryStick
+ SmartMedia
+ xD-PictureCard
+ UniversalFlashStorage
+ NonVolatileMemoryExpress
+ SolidStateDrive
+ HardDiskDrive
+ UniversalSerialBus
+ SerialAttachedSCSI
+ SerialATA
+ PeripheralComponentInterconnect
+ AdvancedTechnologyAttachment
+ IntegratedDriveElectronics
+ SmallComputerSystemInterface
+ SerialAttached SCSI
+ FibreChannel
+ InfiniBand
+ Thunderbolt
+ FireWire
+ eSATA
+ USB4
+ USB3
+ USB2
+ USB1
+ IEEE1394
+ IEEE1394b
+ SATA
+ SATA2
+ SATA3
+ SAS
+ FC
+ IB
+ TB
+ TB2
+ TB3
+ TB4
+ mSATA
+ M2
+ U2
+ EDSFF
+ NF1
+ AIC
+ HHHL
+ FHHL
+ LP
+ MD2
+ MD1
+ ITX
+ DTX
+ ATX
+ microATX
+ miniITX
+ nanoITX
+ picoITX
+ mobileITX
+ EPIC
+ EBX
+ PC104
+ PC104Plus
+ PCI104
+ EPIC
+ EBX
+ ETX
+ COMExpress
+ Qseven
+ SMARC
+ EMBC
+ NanoCOM
+ PicoCOM
+ MicroCOM
+ CoreModule
+ SOM
+ Qseven
+ SMARC
+ COMExpress
+ ETX
+ EPIC
+ EBX
+ PC104
+ PCI104
+ COMExpressType6
+ COMExpressType10
+ SMARC21
+ SMARC20
+ Qseven21
+ Qseven20
+ EMBC
+ NanoCOM
+ PicoCOM
+ MicroCOM
+ CoreModule440
+ Geode
+ APU
+ SoC
+ SiP
+ PoP
+ MCP
+ BGA
+ LGA
+ PGA
+ ZIF
+ LCC
+ QFN
+ QFP
+ TQFP
+ LQFP
+ VQFP
+ PLCC
+ DIP
+ SIP
+ ZIP
+ SOP
+ SSOP
+ TSSOP
+ MSOP
+ QSOP
+ SOIC
+ SON
+ DFN
+ MLF
+ LLP
+ WLCSP
+ FlipChip
+ WireBond
+ TapeAutomatedBonding
+ ChipScalePackage
+ BallGridArray
+ PinGridArray
+ LandGridArray
+ ZeroInsertionForce
+ LeadlessChipCarrier
+ QuadFlatPack
+ ThinQuadFlatPack
+ LowProfileQuadFlatPack
+ VeryThinQuadFlatPack
+ PlasticLeadedChipCarrier
+ DualInlinePackage
+ SingleInlinePackage
+ ZigZagInlinePackage
+ SmallOutlinePackage
+ ShrinkSmallOutlinePackage
+ ThinShrinkSmallOutlinePackage
+ MiniSmallOutlinePackage
+ QuarterSizeSmallOutlinePackage
+ SmallOutlineIntegratedCircuit
+ SmallOutlineNoleads
+ DualFlatNoleads
+ MicroLeadFramePackage
+ LeadlessLeadframePackage
+ WaferLevelChipScalePackage
