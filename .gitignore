@@ -16,13 +16,18 @@ venv/
 __pycache__/
 .mypy_cache/
 .pytest_cache/
+.nova-deps/
+.subprojects/
+
+# Temporary files
+*.tmp
+*.temp
 
 # Editor/IDE files
 .vscode/
 .idea/
 *.swp
 *.swo
-*.tmp
 
 # Logs
 *.log
@@ -37,7 +42,11 @@ coverage/
 htmlcov/
 .coverage
 
-# OS specific
+# System files
 .DS_Store
 Thumbs.db
+
+# Configuration backups
+*.bak
+*.backup
 ```
