@@ -1,33 +1,33 @@
-# NovaOS GTK Theme
+# JimOS GTK Theme
 # Modern, Windows 11-inspired theme with rounded corners and smooth animations
 
-@define-color nova_primary #6c63ff;
-@define-color nova_primary_dark #5a52d5;
-@define-color nova_primary_light #8f87ff;
-@define-color nova_accent #00d4ff;
-@define-color nova_accent_dark #00b8e6;
-@define-color nova_background #0a0a12;
-@define-color nova_surface #16161e;
-@define-color nova_surface_light #1f1f2e;
-@define-color nova_error #ff5252;
-@define-color nova_success #4caf50;
-@define-color nova_warning #ff9800;
-@define-color nova_info #2196f3;
+@define-color jim_primary #6c63ff;
+@define-color jim_primary_dark #5a52d5;
+@define-color jim_primary_light #8f87ff;
+@define-color jim_accent #00d4ff;
+@define-color jim_accent_dark #00b8e6;
+@define-color jim_background #0a0a12;
+@define-color jim_surface #16161e;
+@define-color jim_surface_light #1f1f2e;
+@define-color jim_error #ff5252;
+@define-color jim_success #4caf50;
+@define-color jim_warning #ff9800;
+@define-color jim_info #2196f3;
 
 /* Window styling */
 window {
-    background-color: @nova_background;
+    background-color: @jim_background;
     color: #ffffff;
     border-radius: 12px;
 }
 
 window.background {
-    background-color: @nova_background;
+    background-color: @jim_background;
 }
 
 /* Header bars */
 headerbar {
-    background: linear-gradient(135deg, @nova_surface_light, @nova_surface);
+    background: linear-gradient(135deg, @jim_surface_light, @jim_surface);
     color: #ffffff;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     padding: 8px 12px;
@@ -65,7 +65,7 @@ headerbar button:active {
 }
 
 .window-buttons button.close {
-    background: @nova_error;
+    background: @jim_error;
     color: white;
 }
 
@@ -74,7 +74,7 @@ headerbar button:active {
 }
 
 .window-buttons button.maximize {
-    background: @nova_success;
+    background: @jim_success;
     color: white;
 }
 
@@ -83,7 +83,7 @@ headerbar button:active {
 }
 
 .window-buttons button.minimize {
-    background: @nova_warning;
+    background: @jim_warning;
     color: white;
 }
 
@@ -93,7 +93,7 @@ headerbar button:active {
 
 /* Buttons */
 button {
-    background: linear-gradient(135deg, @nova_primary_light, @nova_primary);
+    background: linear-gradient(135deg, @jim_primary_light, @jim_primary);
     color: #ffffff;
     border: none;
     border-radius: 8px;
@@ -103,67 +103,67 @@ button {
 }
 
 button:hover {
-    background: linear-gradient(135deg, @nova_primary, @nova_primary_dark);
+    background: linear-gradient(135deg, @jim_primary, @jim_primary_dark);
     box-shadow: 0 4px 12px rgba(108, 99, 255, 0.4);
 }
 
 button:active {
-    background: @nova_primary_dark;
+    background: @jim_primary_dark;
     box-shadow: 0 1px 4px rgba(108, 99, 255, 0.3);
 }
 
 button:disabled {
-    background: @nova_surface_light;
+    background: @jim_surface_light;
     color: rgba(255, 255, 255, 0.4);
     box-shadow: none;
 }
 
 button.suggested-action {
-    background: linear-gradient(135deg, @nova_accent, @nova_accent_dark);
+    background: linear-gradient(135deg, @jim_accent, @jim_accent_dark);
     box-shadow: 0 2px 8px rgba(0, 212, 255, 0.3);
 }
 
 button.destructive-action {
-    background: linear-gradient(135deg, @nova_error, #d32f2f);
+    background: linear-gradient(135deg, @jim_error, #d32f2f);
     box-shadow: 0 2px 8px rgba(255, 82, 82, 0.3);
 }
 
 /* Entries / Text fields */
 entry {
-    background: @nova_surface;
+    background: @jim_surface;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
     padding: 8px 12px;
     color: #ffffff;
-    caret-color: @nova_accent;
+    caret-color: @jim_accent;
 }
 
 entry:focus {
-    border-color: @nova_primary;
+    border-color: @jim_primary;
     box-shadow: 0 0 0 2px rgba(108, 99, 255, 0.2);
 }
 
 entry:disabled {
-    background: @nova_surface_light;
+    background: @jim_surface_light;
     color: rgba(255, 255, 255, 0.4);
 }
 
 /* Cards */
 .card {
-    background: @nova_surface;
+    background: @jim_surface;
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 12px;
     padding: 16px;
 }
 
 .card:hover {
-    background: @nova_surface_light;
+    background: @jim_surface_light;
     border-color: rgba(255, 255, 255, 0.1);
 }
 
 /* Lists */
 list {
-    background: @nova_surface;
+    background: @jim_surface;
     border-radius: 12px;
 }
 
@@ -199,25 +199,25 @@ scrollbar slider:hover {
 
 /* Progress bars */
 progressbar progress {
-    background: linear-gradient(90deg, @nova_primary, @nova_accent);
+    background: linear-gradient(90deg, @jim_primary, @jim_accent);
     border-radius: 4px;
 }
 
 progressbar trough {
-    background: @nova_surface;
+    background: @jim_surface;
     border-radius: 4px;
 }
 
 /* Switches */
 switch {
-    background: @nova_surface_light;
+    background: @jim_surface_light;
     border-radius: 16px;
     min-width: 52px;
     min-height: 32px;
 }
 
 switch:checked {
-    background: @nova_primary;
+    background: @jim_primary;
 }
 
 switch slider {
@@ -239,8 +239,8 @@ check, radio {
 }
 
 check:checked, radio:checked {
-    background: @nova_primary;
-    border-color: @nova_primary;
+    background: @jim_primary;
+    border-color: @jim_primary;
 }
 
 radio, radio:checked {
@@ -249,7 +249,7 @@ radio, radio:checked {
 
 /* Tooltips */
 tooltip {
-    background: @nova_surface_light;
+    background: @jim_surface_light;
     color: #ffffff;
     border-radius: 8px;
     padding: 8px 12px;
@@ -258,7 +258,7 @@ tooltip {
 
 /* Menus */
 menu, .menu {
-    background: @nova_surface_light;
+    background: @jim_surface_light;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     padding: 8px;
@@ -276,7 +276,7 @@ menu menuitem:hover, .menu menuitem:hover {
 
 /* Popovers */
 popover {
-    background: @nova_surface_light;
+    background: @jim_surface_light;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     padding: 8px;
@@ -285,13 +285,13 @@ popover {
 /* Dialogs */
 dialog .dialog-action-area {
     padding: 16px;
-    background: @nova_surface;
+    background: @jim_surface;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 /* Sidebar */
 .sidebar {
-    background: @nova_surface;
+    background: @jim_surface;
     border-right: 1px solid rgba(255, 255, 255, 0.05);
 }
 
@@ -307,7 +307,7 @@ dialog .dialog-action-area {
 
 /* Notebook / Tabs */
 notebook header {
-    background: @nova_surface;
+    background: @jim_surface;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
@@ -319,19 +319,19 @@ notebook tab {
 }
 
 notebook tab:checked {
-    background: @nova_surface_light;
+    background: @jim_surface_light;
     color: #ffffff;
 }
 
 /* Scale / Slider */
 scale trough {
-    background: @nova_surface_light;
+    background: @jim_surface_light;
     border-radius: 4px;
     min-height: 4px;
 }
 
 scale highlight {
-    background: @nova_primary;
+    background: @jim_primary;
     border-radius: 4px;
 }
 
@@ -345,7 +345,7 @@ scale slider {
 
 /* Spinbuttons */
 spinbutton {
-    background: @nova_surface;
+    background: @jim_surface;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
 }
@@ -374,19 +374,19 @@ separator {
 
 /* Status colors */
 .success {
-    color: @nova_success;
+    color: @jim_success;
 }
 
 .warning {
-    color: @nova_warning;
+    color: @jim_warning;
 }
 
 .error {
-    color: @nova_error;
+    color: @jim_error;
 }
 
 .info {
-    color: @nova_info;
+    color: @jim_info;
 }
 
 /* Animations */

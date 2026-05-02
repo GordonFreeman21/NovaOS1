@@ -1,6 +1,6 @@
 #!/bin/bash
-# NovaOS ISO Build Script
-# Complete automated build process for NovaOS
+# JimOS ISO Build Script
+# Complete automated build process for JimOS
 
 set -e  # Exit on error
 
@@ -15,7 +15,7 @@ NC='\033[0m' # No Color
 BUILD_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 OUTPUT_DIR="${BUILD_DIR}/output"
 PACKAGES_DIR="${BUILD_DIR}/packages"
-ISO_NAME="novaos-1.0-amd64.iso"
+ISO_NAME="jimos-1.0-amd64.iso"
 TIMESTAMP=$(date +%Y%m%d-%H%M%S)
 
 log_info() {
@@ -73,23 +73,23 @@ setup_build_environment() {
 }
 
 build_de_components() {
-    log_info "Building NovaDe Desktop Environment components..."
+    log_info "Building JimDe Desktop Environment components..."
     
     local de_components=(
-        "nova-compositor"
-        "nova-panel"
-        "nova-launcher"
-        "nova-settings"
-        "nova-notifications"
-        "nova-lockscreen"
-        "nova-greeter"
-        "nova-wm"
+        "jim-compositor"
+        "jim-panel"
+        "jim-launcher"
+        "jim-settings"
+        "jim-notifications"
+        "jim-lockscreen"
+        "jim-greeter"
+        "jim-wm"
     )
     
     for component in "${de_components[@]}"; do
-        if [ -d "${BUILD_DIR}/nova-de/${component}" ]; then
+        if [ -d "${BUILD_DIR}/jim-de/${component}" ]; then
             log_info "Building ${component}..."
-            cd "${BUILD_DIR}/nova-de/${component}"
+            cd "${BUILD_DIR}/jim-de/${component}"
             
             if [ -f "meson.build" ]; then
                 meson setup build --prefix=/usr 2>/dev/null || true
@@ -102,7 +102,7 @@ build_de_components() {
                         --pkgname="${component}" \
                         --pkgversion=1.0.0 \
                         --pkggroup=x11 \
-                        --maintainer="NovaOS Team <team@novaos.org>" \
+                        --maintainer="JimOS Team <team@jimos.org>" \
                         ninja install 2>/dev/null || true
                     cp *.deb "${PACKAGES_DIR}/de/" 2>/dev/null || true
                 fi
@@ -116,26 +116,26 @@ build_de_components() {
 }
 
 build_applications() {
-    log_info "Building NovaOS applications..."
+    log_info "Building JimOS applications..."
     
     local apps=(
-        "nova-files"
-        "nova-terminal"
-        "nova-software"
-        "nova-monitor"
-        "nova-screenshot"
-        "nova-editor"
-        "nova-viewer"
-        "nova-player"
-        "nova-calculator"
-        "nova-backup"
-        "nova-welcome"
+        "jim-files"
+        "jim-terminal"
+        "jim-software"
+        "jim-monitor"
+        "jim-screenshot"
+        "jim-editor"
+        "jim-viewer"
+        "jim-player"
+        "jim-calculator"
+        "jim-backup"
+        "jim-welcome"
     )
     
     for app in "${apps[@]}"; do
-        if [ -d "${BUILD_DIR}/nova-apps/${app}" ]; then
+        if [ -d "${BUILD_DIR}/jim-apps/${app}" ]; then
             log_info "Building ${app}..."
-            cd "${BUILD_DIR}/nova-apps/${app}"
+            cd "${BUILD_DIR}/jim-apps/${app}"
             
             if [ -f "meson.build" ]; then
                 meson setup build --prefix=/usr 2>/dev/null || true
@@ -147,7 +147,7 @@ build_applications() {
                         --pkgname="${app}" \
                         --pkgversion=1.0.0 \
                         --pkggroup=x11 \
-                        --maintainer="NovaOS Team <team@novaos.org>" \
+                        --maintainer="JimOS Team <team@jimos.org>" \
                         ninja install 2>/dev/null || true
                     cp *.deb "${PACKAGES_DIR}/apps/" 2>/dev/null || true
                 fi
@@ -165,7 +165,7 @@ configure_live_build() {
     
     cd "${BUILD_DIR}"
     
-    # Configure live-build with NovaOS settings
+    # Configure live-build with JimOS settings
     sudo lb config \
         --mode debian \
         --distribution bookworm \
@@ -175,8 +175,8 @@ configure_live_build() {
         --debian-installer-distribution bookworm \
         --apt-indices false \
         --memtest none \
-        --iso-application "NovaOS" \
-        --iso-publisher "NovaOS Project <https://novaos.org>" \
+        --iso-application "JimOS" \
+        --iso-publisher "JimOS Project <https://jimos.org>" \
         --iso-volume "NOVAOS_INSTALL" \
         --binary-images iso-hybrid \
         --debian-installer-gui false \
@@ -259,7 +259,7 @@ finalize_iso() {
 show_summary() {
     echo ""
     echo "=========================================="
-    echo -e "${GREEN}NovaOS Build Complete!${NC}"
+    echo -e "${GREEN}JimOS Build Complete!${NC}"
     echo "=========================================="
     echo ""
     echo "Output files:"
@@ -278,7 +278,7 @@ show_summary() {
 main() {
     echo ""
     echo "=========================================="
-    echo -e "${BLUE}NovaOS Build System${NC}"
+    echo -e "${BLUE}JimOS Build System${NC}"
     echo "=========================================="
     echo ""
     
