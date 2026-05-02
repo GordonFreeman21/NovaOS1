@@ -2,21 +2,45 @@
 # Build artifacts
 build/
 dist/
+*.o
+*.obj
+*.so
+*.a
+*.dll
+*.exe
 
 # Dependencies
+node_modules/
+.venv/
+venv/
+__pycache__/
+.mypy_cache/
+.pytest_cache/
 .nova-deps/
 .subprojects/
 
 # Temporary files
 *.tmp
 *.temp
-*.log
 
 # Editor/IDE files
 .vscode/
 .idea/
 *.swp
 *.swo
+
+# Logs
+*.log
+
+# Environment
+.env
+.env.local
+*.env.*
+
+# Coverage
+coverage/
+htmlcov/
+.coverage
 
 # System files
 .DS_Store

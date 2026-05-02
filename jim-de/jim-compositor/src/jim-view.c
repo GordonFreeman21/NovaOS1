@@ -1,20 +1,20 @@
 /*
- * Nova View Management
+ * Jim View Management
  * 
- * Window/view handling for NovaDe compositor
+ * Window/view handling for JimDe compositor
  * 
- * Copyright (C) 2024 NovaOS Project
+ * Copyright (C) 2024 JimOS Project
  * Licensed under GPL-3.0-or-later
  */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "nova-compositor.h"
+#include "jim-compositor.h"
 
 /* Stub implementation - full implementation in progress */
 
-struct nova_view *nova_server_view_at(struct nova_server *server,
+struct jim_view *jim_server_view_at(struct jim_server *server,
                                        double lx, double ly,
                                        struct wlr_surface **surface,
                                        double *sx, double *sy) {
@@ -25,20 +25,20 @@ struct nova_view *nova_server_view_at(struct nova_server *server,
     return NULL;
 }
 
-void nova_server_focus_view(struct nova_server *server, struct nova_view *view) {
+void jim_server_focus_view(struct jim_server *server, struct jim_view *view) {
     /* TODO: Implement view focusing */
     (void)server;
     (void)view;
 }
 
-void nova_server_close_view(struct nova_server *server, struct nova_view *view) {
+void jim_server_close_view(struct jim_server *server, struct jim_view *view) {
     /* TODO: Implement view closing */
     (void)server;
     (void)view;
 }
 
-void nova_server_move_view(struct nova_server *server, 
-                           struct nova_view *view,
+void jim_server_move_view(struct jim_server *server, 
+                           struct jim_view *view,
                            double lx, double ly) {
     /* TODO: Implement view moving */
     (void)server;
@@ -47,8 +47,8 @@ void nova_server_move_view(struct nova_server *server,
     (void)ly;
 }
 
-void nova_server_resize_view(struct nova_server *server,
-                             struct nova_view *view,
+void jim_server_resize_view(struct jim_server *server,
+                             struct jim_view *view,
                              int32_t width, int32_t height) {
     /* TODO: Implement view resizing */
     (void)server;

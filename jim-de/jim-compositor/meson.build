@@ -1,4 +1,4 @@
-project('nova-compositor', 'c',
+project('jim-compositor', 'c',
   version: '1.0.0',
   license: 'GPL-3.0-or-later',
   default_options: [
@@ -76,22 +76,22 @@ inc = include_directories('include')
 
 # Source files
 sources = files(
-  'src/nova-compositor.c',
-  'src/nova-input.c',
-  'src/nova-output.c',
-  'src/nova-view.c',
-  'src/nova-render.c',
-  'src/nova-keybindings.c',
-  'src/nova-animations.c'
+  'src/jim-compositor.c',
+  'src/jim-input.c',
+  'src/jim-output.c',
+  'src/jim-view.c',
+  'src/jim-render.c',
+  'src/jim-keybindings.c',
+  'src/jim-animations.c'
 )
 
 # Header files
 headers = files(
-  'include/nova-compositor.h'
+  'include/jim-compositor.h'
 )
 
 # Main executable
-executable('nova-compositor',
+executable('jim-compositor',
   sources,
   include_directories: inc,
   dependencies: deps,
@@ -106,7 +106,7 @@ executable('nova-compositor',
 )
 
 # Install headers
-install_headers(headers, subdir: 'nova-de')
+install_headers(headers, subdir: 'jim-de')
 
 # Configuration file
 conf_data = configuration_data()
@@ -119,17 +119,17 @@ conf_data.set('HAVE_AVX2', has_avx2 ? 1 : 0)
 configure_file(
   output: 'config.h',
   configuration: conf_data,
-  install_dir: get_option('prefix') / 'include' / 'nova-de'
+  install_dir: get_option('prefix') / 'include' / 'jim-de'
 )
 
 # pkg-config file
 pkg = import('pkgconfig')
 pkg.generate(
-  name: 'nova-compositor',
-  description: 'NovaDe Wayland Compositor',
+  name: 'jim-compositor',
+  description: 'JimDe Wayland Compositor',
   version: meson.project_version(),
-  filebase: 'nova-compositor',
-  subdirs: ['nova-de'],
+  filebase: 'jim-compositor',
+  subdirs: ['jim-de'],
   requires_private: [
     'wayland-server',
     'pixman-1',

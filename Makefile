@@ -1,4 +1,4 @@
-# Makefile - NovaOS Master Build System
+# Makefile - JimOS Master Build System
 
 .PHONY: all build-de build-apps build-iso test-vm create-usb clean help
 
@@ -6,7 +6,7 @@
 BUILD_DIR := $(shell pwd)
 OUTPUT_DIR := $(BUILD_DIR)/output
 PACKAGES_DIR := $(BUILD_DIR)/packages
-ISO_NAME := novaos-1.0-amd64.iso
+ISO_NAME := jimos-1.0-amd64.iso
 
 # Colors for output
 BLUE := \033[1;34m
@@ -21,14 +21,14 @@ all: check-deps build-de build-apps build-packages build-iso
 
 # Help target
 help:
-	@echo "NovaOS Build System"
+	@echo "JimOS Build System"
 	@echo "==================="
 	@echo ""
 	@echo "Targets:"
 	@echo "  all          - Build everything (default)"
 	@echo "  check-deps   - Check build dependencies"
-	@echo "  build-de     - Build NovaDe desktop environment"
-	@echo "  build-apps   - Build NovaOS applications"
+	@echo "  build-de     - Build JimDe desktop environment"
+	@echo "  build-apps   - Build JimOS applications"
 	@echo "  build-packages - Organize all .deb packages"
 	@echo "  build-iso    - Build the installation ISO"
 	@echo "  test-vm      - Test ISO in QEMU"
@@ -54,57 +54,57 @@ check-deps:
 	@which xorriso > /dev/null || (echo -e "$(RED)✗ xorriso not installed$(NC)" && exit 1)
 	@echo -e "$(GREEN)✓ All required dependencies found$(NC)"
 
-# Build NovaDe Desktop Environment
+# Build JimDe Desktop Environment
 build-de:
-	@echo -e "$(BLUE)Building NovaDe Desktop Environment...$(NC)"
+	@echo -e "$(BLUE)Building JimDe Desktop Environment...$(NC)"
 	@mkdir -p $(PACKAGES_DIR)/de
 	\
 	echo "Building Nova Compositor..." && \
-	cd $(BUILD_DIR)/nova-de/nova-compositor && \
+	cd $(BUILD_DIR)/jim-de/nova-compositor && \
 	meson setup build --prefix=/usr 2>/dev/null || true && \
 	ninja -C build 2>/dev/null || true && \
 	cd $(BUILD_DIR) && \
 	echo "Building Nova Panel..." && \
-	cd $(BUILD_DIR)/nova-de/nova-panel && \
+	cd $(BUILD_DIR)/jim-de/nova-panel && \
 	meson setup build --prefix=/usr 2>/dev/null || true && \
 	ninja -C build 2>/dev/null || true && \
 	cd $(BUILD_DIR) && \
 	echo "Building Nova Launcher..." && \
-	cd $(BUILD_DIR)/nova-de/nova-launcher && \
+	cd $(BUILD_DIR)/jim-de/nova-launcher && \
 	meson setup build --prefix=/usr 2>/dev/null || true && \
 	ninja -C build 2>/dev/null || true && \
 	cd $(BUILD_DIR) && \
 	echo "Building Nova Settings..." && \
-	cd $(BUILD_DIR)/nova-de/nova-settings && \
+	cd $(BUILD_DIR)/jim-de/nova-settings && \
 	meson setup build --prefix=/usr 2>/dev/null || true && \
 	ninja -C build 2>/dev/null || true && \
 	cd $(BUILD_DIR) && \
 	echo "Building Nova Notifications..." && \
-	cd $(BUILD_DIR)/nova-de/nova-notifications && \
+	cd $(BUILD_DIR)/jim-de/nova-notifications && \
 	meson setup build --prefix=/usr 2>/dev/null || true && \
 	ninja -C build 2>/dev/null || true && \
 	cd $(BUILD_DIR) && \
 	echo "Building Nova Lockscreen..." && \
-	cd $(BUILD_DIR)/nova-de/nova-lockscreen && \
+	cd $(BUILD_DIR)/jim-de/nova-lockscreen && \
 	meson setup build --prefix=/usr 2>/dev/null || true && \
 	ninja -C build 2>/dev/null || true && \
 	cd $(BUILD_DIR) && \
 	echo "Building Nova Greeter..." && \
-	cd $(BUILD_DIR)/nova-de/nova-greeter && \
+	cd $(BUILD_DIR)/jim-de/nova-greeter && \
 	meson setup build --prefix=/usr 2>/dev/null || true && \
 	ninja -C build 2>/dev/null || true && \
 	cd $(BUILD_DIR) && \
-	echo -e "$(GREEN)✓ NovaDe components built$(NC)"
+	echo -e "$(GREEN)✓ JimDe components built$(NC)"
 
 # Build Applications
 build-apps:
-	@echo -e "$(BLUE)Building NovaOS Applications...$(NC)"
+	@echo -e "$(BLUE)Building JimOS Applications...$(NC)"
 	@mkdir -p $(PACKAGES_DIR)/apps
 	\
 	for app in nova-files nova-terminal nova-software nova-monitor nova-screenshot \
 	           nova-editor nova-viewer nova-player nova-calculator nova-backup nova-welcome; do \
 		echo "Building $$app..."; \
-		cd $(BUILD_DIR)/nova-apps/$$app && \
+		cd $(BUILD_DIR)/jim-apps/$$app && \
 		meson setup build --prefix=/usr 2>/dev/null || true && \
 		ninja -C build 2>/dev/null || true; \
 	done && \
@@ -116,13 +116,13 @@ build-packages:
 	@echo -e "$(BLUE)Organizing packages...$(NC)"
 	@mkdir -p $(PACKAGES_DIR)
 	@cp -r $(BUILD_DIR)/base-system/packages/* $(PACKAGES_DIR)/ 2>/dev/null || true
-	@find $(BUILD_DIR)/nova-de -name "*.deb" -exec cp {} $(PACKAGES_DIR)/de/ \; 2>/dev/null || true
-	@find $(BUILD_DIR)/nova-apps -name "*.deb" -exec cp {} $(PACKAGES_DIR)/apps/ \; 2>/dev/null || true
+	@find $(BUILD_DIR)/jim-de -name "*.deb" -exec cp {} $(PACKAGES_DIR)/de/ \; 2>/dev/null || true
+	@find $(BUILD_DIR)/jim-apps -name "*.deb" -exec cp {} $(PACKAGES_DIR)/apps/ \; 2>/dev/null || true
 	@echo -e "$(GREEN)✓ Packages organized in $(PACKAGES_DIR)$(NC)"
 
 # Build ISO using live-build
 build-iso:
-	@echo -e "$(BLUE)Building NovaOS ISO...$(NC)"
+	@echo -e "$(BLUE)Building JimOS ISO...$(NC)"
 	@mkdir -p $(OUTPUT_DIR)
 	@cd $(BUILD_DIR) && \
 	if [ -d "chroot" ]; then \
@@ -139,8 +139,8 @@ build-iso:
 		--debian-installer-distribution bookworm \
 		--apt-indices false \
 		--memtest none \
-		--iso-application "NovaOS" \
-		--iso-publisher "NovaOS Project <https://novaos.org>" \
+		--iso-application "JimOS" \
+		--iso-publisher "JimOS Project <https://jimos.org>" \
 		--iso-volume "NOVAOS_INSTALL" \
 		--binary-images iso-hybrid \
 		--debian-installer-gui false \
@@ -206,8 +206,8 @@ clean:
 	@echo -e "$(BLUE)Cleaning build artifacts...$(NC)"
 	@sudo lb clean 2>/dev/null || true
 	@rm -rf chroot binary cache .build 2>/dev/null || true
-	@find $(BUILD_DIR)/nova-de -type d -name "build" -exec rm -rf {} + 2>/dev/null || true
-	@find $(BUILD_DIR)/nova-apps -type d -name "build" -exec rm -rf {} + 2>/dev/null || true
+	@find $(BUILD_DIR)/jim-de -type d -name "build" -exec rm -rf {} + 2>/dev/null || true
+	@find $(BUILD_DIR)/jim-apps -type d -name "build" -exec rm -rf {} + 2>/dev/null || true
 	@rm -rf $(PACKAGES_DIR)/* 2>/dev/null || true
 	@rm -rf $(OUTPUT_DIR)/* 2>/dev/null || true
 	@rm -f config 2>/dev/null || true
@@ -222,7 +222,7 @@ dev-build:
 
 # Install to local system (for testing)
 install-local:
-	@echo -e "$(YELLOW)WARNING: This will install NovaOS packages to your current system!$(NC)"
+	@echo -e "$(YELLOW)WARNING: This will install JimOS packages to your current system!$(NC)"
 	@read -p "Continue? (yes/no): " confirm && \
 	if [ "$$confirm" = "yes" ]; then \
 		echo "Installing DE packages..."; \

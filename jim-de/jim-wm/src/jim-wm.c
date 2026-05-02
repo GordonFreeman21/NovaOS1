@@ -1,10 +1,10 @@
 /*
- * NovaWM - Window Manager Logic for NovaDe
+ * JimWM - Window Manager Logic for JimDe
  * 
  * Advanced window management with snap layouts, virtual desktops,
  * and smooth animations. Implemented in C with assembly optimizations.
  * 
- * Copyright (C) 2024 NovaOS Project
+ * Copyright (C) 2024 JimOS Project
  * Licensed under GPL-3.0-or-later
  */
 
@@ -19,7 +19,7 @@
 #include <wlr/types/wlr_output_layout.h>
 #include <wlr/types/wlr_scene.h>
 
-#include "nova-compositor.h"
+#include "jim-compositor.h"
 
 /* ============================================================================
  * Constants and Definitions
@@ -45,7 +45,7 @@ typedef enum {
     SNAP_CENTER_THIRD,
     SNAP_RIGHT_THIRD,
     SNAP_MAXIMIZE
-} nova_snap_type_t;
+} jim_snap_type_t;
 
 /* ============================================================================
  * Data Structures
@@ -54,47 +54,47 @@ typedef enum {
 /**
  * Snap zone definition
  */
-struct nova_snap_zone {
-    nova_snap_type_t type;
-    nova_rect_t region;
+struct jim_snap_zone {
+    jim_snap_type_t type;
+    jim_rect_t region;
     bool active;
-    struct nova_view *preview_view;
+    struct jim_view *preview_view;
 };
 
 /**
  * Workspace definition
  */
-struct nova_workspace {
+struct jim_workspace {
     int id;
     char name[64];
     struct wl_list views;
-    struct nova_view *focused_view;
+    struct jim_view *focused_view;
     bool active;
     
     /* Wallpaper */
     char wallpaper_path[512];
-    nova_color_t background_color;
+    jim_color_t background_color;
 };
 
 /**
  * Window arrangement (snap group)
  */
-struct nova_snap_group {
+struct jim_snap_group {
     int id;
     struct wl_list views;  /* List of views in this arrangement */
     int view_count;
-    nova_snap_type_t layout_type;
-    struct nova_output *output;
+    jim_snap_type_t layout_type;
+    struct jim_output *output;
     int workspace_id;
 };
 
 /**
  * Animation controller for window movements
  */
-struct nova_window_animation {
-    struct nova_view *view;
-    nova_rect_t start_rect;
-    nova_rect_t target_rect;
+struct jim_window_animation {
+    struct jim_view *view;
+    jim_rect_t start_rect;
+    jim_rect_t target_rect;
     uint64_t start_time;
     uint64_t duration_ms;
     bool active;
@@ -107,18 +107,18 @@ struct nova_window_animation {
 /**
  * Window manager state
  */
-struct nova_wm {
-    struct nova_server *server;
+struct jim_wm {
+    struct jim_server *server;
     
     /* Workspaces */
-    struct nova_workspace workspaces[MAX_WORKSPACES];
+    struct jim_workspace workspaces[MAX_WORKSPACES];
     int current_workspace;
     int workspace_count;
     
     /* Snap zones */
-    struct nova_snap_zone snap_zones[MAX_SNAP_ZONES];
-    struct nova_snap_zone *active_snap_zone;
-    struct nova_view *drag_view;
+    struct jim_snap_zone snap_zones[MAX_SNAP_ZONES];
+    struct jim_snap_zone *active_snap_zone;
+    struct jim_view *drag_view;
     
     /* Snap groups */
     struct wl_list snap_groups;
@@ -135,7 +135,7 @@ struct nova_wm {
     int border_radius;
     
     /* Focus tracking */
-    struct nova_view *last_focused_view;
+    struct jim_view *last_focused_view;
     struct wl_list focus_history;
     
     /* Tiling mode */
@@ -151,7 +151,7 @@ struct nova_wm {
  * Fast rectangle intersection test using SIMD
  * Returns 1 if rectangles intersect, 0 otherwise
  */
-static inline int nova_rect_intersect_simd(const nova_rect_t *a, const nova_rect_t *b) {
+static inline int jim_rect_intersect_simd(const jim_rect_t *a, const jim_rect_t *b) {
     int result;
     
     __asm__ volatile (
@@ -201,7 +201,7 @@ static inline int nova_rect_intersect_simd(const nova_rect_t *a, const nova_rect
  * Fast distance calculation using SSE
  * Calculates squared distance between two points
  */
-static inline uint32_t nova_distance_squared_simd(int32_t x1, int32_t y1, 
+static inline uint32_t jim_distance_squared_simd(int32_t x1, int32_t y1, 
                                                    int32_t x2, int32_t y2) {
     uint32_t result;
     int32_t dx = x2 - x1;
@@ -225,9 +225,9 @@ static inline uint32_t nova_distance_squared_simd(int32_t x1, int32_t y1,
 /**
  * Vectorized lerp for rectangle animation
  */
-static inline void nova_rect_lerp_simd(nova_rect_t *result, 
-                                        const nova_rect_t *start,
-                                        const nova_rect_t *end,
+static inline void jim_rect_lerp_simd(jim_rect_t *result, 
+                                        const jim_rect_t *start,
+                                        const jim_rect_t *end,
                                         float t) {
     __asm__ volatile (
         "movss %[t_val], %%xmm0\n\t"
@@ -302,8 +302,8 @@ static inline void nova_rect_lerp_simd(nova_rect_t *result,
 /**
  * Initialize window manager
  */
-struct nova_wm *nova_wm_create(struct nova_server *server) {
-    struct nova_wm *wm = calloc(1, sizeof(*wm));
+struct jim_wm *jim_wm_create(struct jim_server *server) {
+    struct jim_wm *wm = calloc(1, sizeof(*wm));
     if (!wm) return NULL;
     
     wm->server = server;
@@ -327,21 +327,21 @@ struct nova_wm *nova_wm_create(struct nova_server *server) {
         snprintf(wm->workspaces[i].name, sizeof(wm->workspaces[i].name),
                  "Workspace %d", i + 1);
         wm->workspaces[i].active = (i == 0);
-        wm->workspaces[i].background_color = (nova_color_t){0.1f, 0.1f, 0.15f, 1.0f};
+        wm->workspaces[i].background_color = (jim_color_t){0.1f, 0.1f, 0.15f, 1.0f};
         wl_list_init(&wm->workspaces[i].views);
     }
     
     /* Initialize snap zones */
-    wm->snap_zones[0] = (struct nova_snap_zone){SNAP_LEFT_HALF};
-    wm->snap_zones[1] = (struct nova_snap_zone){SNAP_RIGHT_HALF};
-    wm->snap_zones[2] = (struct nova_snap_zone){SNAP_TOP_HALF};
-    wm->snap_zones[3] = (struct nova_snap_zone){SNAP_BOTTOM_HALF};
-    wm->snap_zones[4] = (struct nova_snap_zone){SNAP_TOP_LEFT_QUADRANT};
-    wm->snap_zones[5] = (struct nova_snap_zone){SNAP_TOP_RIGHT_QUADRANT};
-    wm->snap_zones[6] = (struct nova_snap_zone){SNAP_BOTTOM_LEFT_QUADRANT};
-    wm->snap_zones[7] = (struct nova_snap_zone){SNAP_BOTTOM_RIGHT_QUADRANT};
+    wm->snap_zones[0] = (struct jim_snap_zone){SNAP_LEFT_HALF};
+    wm->snap_zones[1] = (struct jim_snap_zone){SNAP_RIGHT_HALF};
+    wm->snap_zones[2] = (struct jim_snap_zone){SNAP_TOP_HALF};
+    wm->snap_zones[3] = (struct jim_snap_zone){SNAP_BOTTOM_HALF};
+    wm->snap_zones[4] = (struct jim_snap_zone){SNAP_TOP_LEFT_QUADRANT};
+    wm->snap_zones[5] = (struct jim_snap_zone){SNAP_TOP_RIGHT_QUADRANT};
+    wm->snap_zones[6] = (struct jim_snap_zone){SNAP_BOTTOM_LEFT_QUADRANT};
+    wm->snap_zones[7] = (struct jim_snap_zone){SNAP_BOTTOM_RIGHT_QUADRANT};
     
-    printf("NovaWM initialized with %d workspaces\n", wm->workspace_count);
+    printf("JimWM initialized with %d workspaces\n", wm->workspace_count);
     
     return wm;
 }
@@ -349,7 +349,7 @@ struct nova_wm *nova_wm_create(struct nova_server *server) {
 /**
  * Destroy window manager
  */
-void nova_wm_destroy(struct nova_wm *wm) {
+void jim_wm_destroy(struct jim_wm *wm) {
     if (!wm) return;
     
     pthread_mutex_destroy(&wm->animation_lock);
@@ -359,16 +359,16 @@ void nova_wm_destroy(struct nova_wm *wm) {
 /**
  * Apply snap layout to a view
  */
-void nova_wm_snap_view(struct nova_wm *wm, struct nova_view *view, 
-                       nova_snap_type_t snap_type) {
+void jim_wm_snap_view(struct jim_wm *wm, struct jim_view *view, 
+                       jim_snap_type_t snap_type) {
     if (!wm || !view) return;
     
-    struct nova_output *output = wl_container_of(
+    struct jim_output *output = wl_container_of(
         wm->server->outputs.next, output, link);
     
     if (!output || !output->enabled) return;
     
-    nova_rect_t target_rect;
+    jim_rect_t target_rect;
     int gap = wm->gap_size;
     
     switch (snap_type) {
@@ -468,12 +468,12 @@ void nova_wm_snap_view(struct nova_wm *wm, struct nova_view *view,
     /* Create animation */
     pthread_mutex_lock(&wm->animation_lock);
     
-    struct nova_window_animation *anim = calloc(1, sizeof(*anim));
+    struct jim_window_animation *anim = calloc(1, sizeof(*anim));
     if (anim) {
         anim->view = view;
         anim->start_rect = view->geometry;
         anim->target_rect = target_rect;
-        anim->start_time = nova_get_time_ms();
+        anim->start_time = jim_get_time_ms();
         anim->duration_ms = ANIMATION_DURATION_MS;
         anim->active = true;
         
@@ -494,11 +494,11 @@ void nova_wm_snap_view(struct nova_wm *wm, struct nova_view *view,
 /**
  * Check if pointer is in snap zone
  */
-struct nova_snap_zone *nova_wm_check_snap_zone(struct nova_wm *wm,
+struct jim_snap_zone *jim_wm_check_snap_zone(struct jim_wm *wm,
                                                 double x, double y) {
     if (!wm || !wm->snap_enabled) return NULL;
     
-    struct nova_output *output = wl_container_of(
+    struct jim_output *output = wl_container_of(
         wm->server->outputs.next, output, link);
     
     if (!output || !output->enabled) return NULL;
@@ -542,13 +542,13 @@ struct nova_snap_zone *nova_wm_check_snap_zone(struct nova_wm *wm,
 /**
  * Update window animations
  */
-void nova_wm_update_animations(struct nova_wm *wm) {
+void jim_wm_update_animations(struct jim_wm *wm) {
     if (!wm) return;
     
     pthread_mutex_lock(&wm->animation_lock);
     
-    struct nova_window_animation *anim, *tmp;
-    uint64_t current_time = nova_get_time_ms();
+    struct jim_window_animation *anim, *tmp;
+    uint64_t current_time = jim_get_time_ms();
     
     wl_list_for_each_safe(anim, tmp, &wm->animations, view->link) {
         if (!anim->active) continue;
@@ -576,7 +576,7 @@ void nova_wm_update_animations(struct nova_wm *wm) {
                   3.0f * mt * t2 * anim->cp2_x + t3 * 1.0f;
         
         /* Apply interpolated value */
-        nova_rect_lerp_simd(&anim->view->geometry, 
+        jim_rect_lerp_simd(&anim->view->geometry, 
                            &anim->start_rect, 
                            &anim->target_rect, 
                            u);
@@ -593,7 +593,7 @@ void nova_wm_update_animations(struct nova_wm *wm) {
 /**
  * Switch to workspace
  */
-void nova_wm_switch_workspace(struct nova_wm *wm, int workspace_id) {
+void jim_wm_switch_workspace(struct jim_wm *wm, int workspace_id) {
     if (!wm || workspace_id < 0 || workspace_id >= MAX_WORKSPACES) return;
     
     if (workspace_id == wm->current_workspace) return;
@@ -606,7 +606,7 @@ void nova_wm_switch_workspace(struct nova_wm *wm, int workspace_id) {
     wm->workspaces[workspace_id].active = true;
     
     /* Hide views on old workspace, show views on new workspace */
-    struct nova_view *view;
+    struct jim_view *view;
     wl_list_for_each(view, &wm->server->views, link) {
         if (view->workspace_id == workspace_id) {
             view->minimized = false;
@@ -622,8 +622,8 @@ void nova_wm_switch_workspace(struct nova_wm *wm, int workspace_id) {
 /**
  * Move view to workspace
  */
-void nova_wm_move_view_to_workspace(struct nova_wm *wm, 
-                                    struct nova_view *view,
+void jim_wm_move_view_to_workspace(struct jim_wm *wm, 
+                                    struct jim_view *view,
                                     int workspace_id) {
     if (!wm || !view || workspace_id < 0 || workspace_id >= MAX_WORKSPACES) return;
     
@@ -638,11 +638,11 @@ void nova_wm_move_view_to_workspace(struct nova_wm *wm,
 /**
  * Create snap group from current arrangement
  */
-struct nova_snap_group *nova_wm_create_snap_group(struct nova_wm *wm,
-                                                   struct nova_output *output) {
+struct jim_snap_group *jim_wm_create_snap_group(struct jim_wm *wm,
+                                                   struct jim_output *output) {
     if (!wm || !output) return NULL;
     
-    struct nova_snap_group *group = calloc(1, sizeof(*group));
+    struct jim_snap_group *group = calloc(1, sizeof(*group));
     if (!group) return NULL;
     
     group->id = wm->next_group_id++;
@@ -651,7 +651,7 @@ struct nova_snap_group *nova_wm_create_snap_group(struct nova_wm *wm,
     wl_list_init(&group->views);
     
     /* Add all visible views on this output to the group */
-    struct nova_view *view;
+    struct jim_view *view;
     wl_list_for_each(view, &wm->server->views, link) {
         if (view->workspace_id == wm->current_workspace && !view->minimized) {
             wl_list_insert(&group->views, &view->link);
@@ -669,8 +669,8 @@ struct nova_snap_group *nova_wm_create_snap_group(struct nova_wm *wm,
 /**
  * Restore snap group arrangement
  */
-void nova_wm_restore_snap_group(struct nova_wm *wm, 
-                                 struct nova_snap_group *group) {
+void jim_wm_restore_snap_group(struct jim_wm *wm, 
+                                 struct jim_snap_group *group) {
     if (!wm || !group) return;
     
     /* TODO: Restore the saved arrangement */
@@ -680,25 +680,25 @@ void nova_wm_restore_snap_group(struct nova_wm *wm,
 /**
  * Get focused view
  */
-struct nova_view *nova_wm_get_focused_view(struct nova_wm *wm) {
+struct jim_view *jim_wm_get_focused_view(struct jim_wm *wm) {
     if (!wm) return NULL;
     
-    struct nova_workspace *ws = &wm->workspaces[wm->current_workspace];
+    struct jim_workspace *ws = &wm->workspaces[wm->current_workspace];
     return ws->focused_view;
 }
 
 /**
  * Focus next view (Alt+Tab behavior)
  */
-void nova_wm_focus_next_view(struct nova_wm *wm) {
+void jim_wm_focus_next_view(struct jim_wm *wm) {
     if (!wm) return;
     
-    struct nova_view *current = nova_wm_get_focused_view(wm);
-    struct nova_view *next = NULL;
+    struct jim_view *current = jim_wm_get_focused_view(wm);
+    struct jim_view *next = NULL;
     
     /* Find next view in focus history */
     bool found_current = false;
-    struct nova_view *view;
+    struct jim_view *view;
     wl_list_for_each(view, &wm->focus_history, link) {
         if (view == current) {
             found_current = true;
@@ -723,14 +723,14 @@ void nova_wm_focus_next_view(struct nova_wm *wm) {
     }
     
     if (next) {
-        nova_server_focus_view(wm->server, next);
+        jim_server_focus_view(wm->server, next);
     }
 }
 
 /**
  * Toggle floating/tiling mode
  */
-void nova_wm_toggle_floating(struct nova_wm *wm, struct nova_view *view) {
+void jim_wm_toggle_floating(struct jim_wm *wm, struct jim_view *view) {
     if (!wm || !view) return;
     
     view->floating = !view->floating;
@@ -742,7 +742,7 @@ void nova_wm_toggle_floating(struct nova_wm *wm, struct nova_view *view) {
         }
     } else {
         /* Tile the view */
-        nova_wm_snap_view(wm, view, SNAP_MAXIMIZE);
+        jim_wm_snap_view(wm, view, SNAP_MAXIMIZE);
     }
     
     printf("View '%s' is now %s\n", view->title, 
@@ -752,10 +752,10 @@ void nova_wm_toggle_floating(struct nova_wm *wm, struct nova_view *view) {
 /**
  * Minimize all windows except specified view (Aero Shake equivalent)
  */
-void nova_wm_shake_minimize(struct nova_wm *wm, struct nova_view *except_view) {
+void jim_wm_shake_minimize(struct jim_wm *wm, struct jim_view *except_view) {
     if (!wm || !except_view) return;
     
-    struct nova_view *view;
+    struct jim_view *view;
     wl_list_for_each(view, &wm->server->views, link) {
         if (view != except_view && 
             view->workspace_id == wm->current_workspace &&
@@ -768,8 +768,8 @@ void nova_wm_shake_minimize(struct nova_wm *wm, struct nova_view *except_view) {
 /**
  * Set view always on top
  */
-void nova_wm_set_always_on_top(struct nova_wm *wm, 
-                               struct nova_view *view, 
+void jim_wm_set_always_on_top(struct jim_wm *wm, 
+                               struct jim_view *view, 
                                bool on_top) {
     if (!wm || !view) return;
     

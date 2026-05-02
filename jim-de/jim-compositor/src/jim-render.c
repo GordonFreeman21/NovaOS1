@@ -1,27 +1,27 @@
 /*
- * Nova Rendering
+ * Jim Rendering
  * 
- * GPU-accelerated rendering for NovaDe compositor
+ * GPU-accelerated rendering for JimDe compositor
  * 
- * Copyright (C) 2024 NovaOS Project
+ * Copyright (C) 2024 JimOS Project
  * Licensed under GPL-3.0-or-later
  */
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "nova-compositor.h"
+#include "jim-compositor.h"
 
 /* Stub implementation - full implementation in progress */
 
-void nova_memcpy_aligned(void *dest, const void *src, size_t n) {
+void jim_memcpy_aligned(void *dest, const void *src, size_t n) {
     memcpy(dest, src, n);
 }
 
-void nova_memset_aligned(void *ptr, int value, size_t n) {
+void jim_memset_aligned(void *ptr, int value, size_t n) {
     memset(ptr, value, n);
 }
 
-void nova_blend_pixels(uint32_t *dest, uint32_t src, float alpha) {
+void jim_blend_pixels(uint32_t *dest, uint32_t src, float alpha) {
     /* Simple alpha blending fallback */
     if (!dest) return;
     
@@ -33,7 +33,7 @@ void nova_blend_pixels(uint32_t *dest, uint32_t src, float alpha) {
     }
 }
 
-void nova_matrix_multiply(float *result, const float *a, const float *b) {
+void jim_matrix_multiply(float *result, const float *a, const float *b) {
     /* Simple 4x4 matrix multiplication fallback */
     for (int row = 0; row < 4; row++) {
         for (int col = 0; col < 4; col++) {
@@ -46,7 +46,7 @@ void nova_matrix_multiply(float *result, const float *a, const float *b) {
     }
 }
 
-uint32_t nova_isqrt(uint32_t n) {
+uint32_t jim_isqrt(uint32_t n) {
     /* Integer square root using Newton's method */
     if (n == 0) return 0;
     
@@ -61,7 +61,7 @@ uint32_t nova_isqrt(uint32_t n) {
     return x;
 }
 
-uint32_t nova_get_cpu_features(void) {
+uint32_t jim_get_cpu_features(void) {
     uint32_t features = 0;
     
     /* Check CPUID for feature flags */
@@ -90,7 +90,7 @@ uint32_t nova_get_cpu_features(void) {
     return features;
 }
 
-uint64_t nova_get_time_ms(void) {
+uint64_t jim_get_time_ms(void) {
     struct timespec ts;
     clock_gettime(CLOCK_MONOTONIC, &ts);
     return (uint64_t)ts.tv_sec * 1000 + ts.tv_nsec / 1000000;

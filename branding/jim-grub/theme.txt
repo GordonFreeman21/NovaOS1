@@ -1,4 +1,4 @@
-# NovaOS GRUB Theme
+# JimOS GRUB Theme
 # Modern boot menu theme with animations
 
 # Global settings
@@ -18,7 +18,7 @@ terminal-border: "0"
 
 # Logo
 + image {
-    file = "nova_logo.png"
+    file = "jim_logo.png"
     left = 50%
     top = 15%
     width = 200
@@ -27,7 +27,7 @@ terminal-border: "0"
 
 # Title text
 + label {
-    text = "NovaOS"
+    text = "JimOS"
     font = "Inter Bold 32"
     color = "#ffffff"
     left = 50%

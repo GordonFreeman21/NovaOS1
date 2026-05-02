@@ -1,27 +1,27 @@
 /*
- * Nova Keybindings
+ * Jim Keybindings
  * 
- * Keyboard shortcut handling for NovaDe compositor
+ * Keyboard shortcut handling for JimDe compositor
  * 
- * Copyright (C) 2024 NovaOS Project
+ * Copyright (C) 2024 JimOS Project
  * Licensed under GPL-3.0-or-later
  */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "nova-compositor.h"
+#include "jim-compositor.h"
 
 /* Stub implementation - full implementation in progress */
 
-struct nova_keybinding {
+struct jim_keybinding {
     uint32_t modifiers;
     uint32_t key;
     void (*handler)(void *server, void *seat);
     const char *description;
 };
 
-static struct nova_keybinding default_keybindings[] = {
+static struct jim_keybinding default_keybindings[] = {
     /* Window Management */
     {0x04, 16, NULL, "Alt+Tab: Switch windows"},
     {0x08, 24, NULL, "Super+Q: Close window"},
@@ -55,11 +55,11 @@ static struct nova_keybinding default_keybindings[] = {
     {0, 0, NULL, NULL}
 };
 
-int nova_keybindings_init(void *server) {
+int jim_keybindings_init(void *server) {
     printf("Keybindings initialized\n");
     return 0;
 }
 
-void nova_keybindings_fini(void) {
+void jim_keybindings_fini(void) {
     printf("Keybindings cleaned up\n");
 }

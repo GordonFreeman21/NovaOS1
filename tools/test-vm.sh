@@ -1,5 +1,5 @@
 #!/bin/bash
-# NovaOS QEMU Test Script
+# JimOS QEMU Test Script
 # Launch the built ISO in a virtual machine for testing
 
 set -e
@@ -15,14 +15,14 @@ NC='\033[0m'
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 BUILD_DIR="$(dirname "${SCRIPT_DIR}")"
 OUTPUT_DIR="${BUILD_DIR}/output"
-ISO_NAME="novaos-1.0-amd64.iso"
+ISO_NAME="jimos-1.0-amd64.iso"
 ISO_PATH="${OUTPUT_DIR}/${ISO_NAME}"
 
 # Default VM settings
 RAM_SIZE=${RAM_SIZE:-4096}
 CPU_CORES=${CPU_CORES:-2}
 DISK_SIZE=${DISK_SIZE:-50G}
-DISK_FILE=${DISK_FILE:-/tmp/novaos-test.qcow2}
+DISK_FILE=${DISK_FILE:-/tmp/jimos-test.qcow2}
 NETWORK=${NETWORK:-user}
 UEFI=${UEFI:-false}
 
@@ -125,14 +125,14 @@ run_qemu() {
 }
 
 show_help() {
-    echo "NovaOS QEMU Test Script"
+    echo "JimOS QEMU Test Script"
     echo ""
     echo "Usage: $0 [OPTIONS]"
     echo ""
     echo "Options:"
     echo "  --ram SIZE        RAM size in MB (default: 4096)"
     echo "  --cpus N          Number of CPU cores (default: 2)"
-    echo "  --disk FILE       Disk image file (default: /tmp/novaos-test.qcow2)"
+    echo "  --disk FILE       Disk image file (default: /tmp/jimos-test.qcow2)"
     echo "  --disk-size SIZE  Disk size (default: 50G)"
     echo "  --network TYPE    Network type: user, bridge, tap, none (default: user)"
     echo "  --uefi            Use UEFI boot instead of BIOS"
@@ -192,7 +192,7 @@ while [[ $# -gt 0 ]]; do
 done
 
 # Main
-log_info "NovaOS QEMU Test"
+log_info "JimOS QEMU Test"
 echo "==================="
 check_qemu
 check_iso

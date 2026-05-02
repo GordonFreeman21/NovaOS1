@@ -1,6 +1,6 @@
 #!/bin/bash
-# NovaOS Bootable USB Creator
-# Create a bootable USB drive from the NovaOS ISO
+# JimOS Bootable USB Creator
+# Create a bootable USB drive from the JimOS ISO
 
 set -e
 
@@ -15,7 +15,7 @@ NC='\033[0m'
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 BUILD_DIR="$(dirname "${SCRIPT_DIR}")"
 OUTPUT_DIR="${BUILD_DIR}/output"
-ISO_NAME="novaos-1.0-amd64.iso"
+ISO_NAME="jimos-1.0-amd64.iso"
 ISO_PATH="${OUTPUT_DIR}/${ISO_NAME}"
 
 log_info() {
@@ -35,7 +35,7 @@ log_error() {
 }
 
 show_help() {
-    echo "NovaOS Bootable USB Creator"
+    echo "JimOS Bootable USB Creator"
     echo ""
     echo "Usage: sudo $0 --device /dev/sdX [OPTIONS]"
     echo ""
@@ -208,7 +208,7 @@ eject_device() {
 show_post_instructions() {
     echo ""
     echo "=========================================="
-    log_success "NovaOS Bootable USB Ready!"
+    log_success "JimOS Bootable USB Ready!"
     echo "=========================================="
     echo ""
     echo "Device: ${DEVICE}"
@@ -218,11 +218,11 @@ show_post_instructions() {
     echo "1. Remove the USB drive"
     echo "2. Insert it into the target computer"
     echo "3. Boot from USB (may require changing boot order in BIOS/UEFI)"
-    echo "4. Select 'Try NovaOS' or 'Install NovaOS' from the boot menu"
+    echo "4. Select 'Try JimOS' or 'Install JimOS' from the boot menu"
     echo ""
     echo "For UEFI systems, you may need to:"
     echo "- Disable Secure Boot, or"
-    echo "- Enroll the NovaOS key in your firmware settings"
+    echo "- Enroll the JimOS key in your firmware settings"
     echo ""
 }
 
@@ -271,7 +271,7 @@ done
 main() {
     echo ""
     echo "=========================================="
-    echo -e "${BLUE}NovaOS Bootable USB Creator${NC}"
+    echo -e "${BLUE}JimOS Bootable USB Creator${NC}"
     echo "=========================================="
     echo ""
     

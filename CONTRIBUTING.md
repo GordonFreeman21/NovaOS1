@@ -1,6 +1,6 @@
-# NovaOS Contributing Guidelines
+# JimOS Contributing Guidelines
 
-Thank you for your interest in contributing to NovaOS! This document provides guidelines and instructions for contributing.
+Thank you for your interest in contributing to JimOS! This document provides guidelines and instructions for contributing.
 
 ## Table of Contents
 
@@ -19,7 +19,7 @@ Thank you for your interest in contributing to NovaOS! This document provides gu
 
 ### Our Pledge
 
-We pledge to make participation in NovaOS a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.
+We pledge to make participation in JimOS a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.
 
 ### Our Standards
 
@@ -47,11 +47,11 @@ Examples of behavior that contributes to creating a positive environment:
 
 ```bash
 # Fork the repository on GitHub, then clone:
-git clone https://github.com/YOUR_USERNAME/novaos.git
-cd novaos
+git clone https://github.com/YOUR_USERNAME/jimos.git
+cd jimos
 
 # Add upstream remote
-git remote add upstream https://github.com/novaos/novaos.git
+git remote add upstream https://github.com/jimos/jimos.git
 ```
 
 ---
@@ -81,13 +81,13 @@ sudo apt install -y \
 ### Build System Overview
 
 ```
-NovaOS/
+JimOS/
 ├── base-system/          # Debian live-build configuration
-├── nova-de/              # Desktop Environment components
-│   ├── nova-compositor/  # Wayland compositor (Rust)
-│   ├── nova-panel/       # Taskbar (GTK4/Rust)
+├── jim-de/              # Desktop Environment components
+│   ├── jim-compositor/  # Wayland compositor (Rust)
+│   ├── jim-panel/       # Taskbar (GTK4/Rust)
 │   └── ...
-├── nova-apps/            # System applications
+├── jim-apps/            # System applications
 ├── branding/             # Themes, icons, wallpapers
 └── tools/                # Build and utility scripts
 ```
@@ -226,7 +226,7 @@ chore: update dependencies
 Include the following information:
 
 1. **System Information**:
-   - NovaOS version
+   - JimOS version
    - Hardware specifications
    - Kernel version
    
@@ -272,7 +272,7 @@ cargo tarpaulin --out Html
 ./tools/test-vm.sh
 
 # Test specific component
-meson test -C build nova-panel
+meson test -C build jim-panel
 ```
 
 ### Manual Testing Checklist
@@ -354,13 +354,13 @@ Look for issues labeled:
 - **GitHub Issues**: Bug reports and feature requests
 - **GitHub Discussions**: General discussion and questions
 - **Discord**: Real-time chat (link in README)
-- **Matrix**: #novaos:matrix.org
+- **Matrix**: #jimos:matrix.org
 
 ---
 
 ## License
 
-By contributing to NovaOS, you agree that your contributions will be licensed under the GPL-3.0-or-later license.
+By contributing to JimOS, you agree that your contributions will be licensed under the GPL-3.0-or-later license.
 
 ---
 
@@ -372,4 +372,4 @@ Don't hesitate to ask! We're happy to help new contributors get started.
 - Search closed issues for similar questions
 - Ask in GitHub Discussions or Discord
 
-Thank you for contributing to NovaOS! 🚀
+Thank you for contributing to JimOS! 🚀

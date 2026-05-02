@@ -1,6 +1,6 @@
-# NovaCompositor - Wayland Compositor for NovaDe
+# JimCompositor - Wayland Compositor for JimDe
 
-High-performance Wayland compositor written in C with assembly optimizations for the NovaOS desktop environment.
+High-performance Wayland compositor written in C with assembly optimizations for the JimOS desktop environment.
 
 ## Features
 
@@ -15,7 +15,7 @@ High-performance Wayland compositor written in C with assembly optimizations for
 
 ```
 src/
-├── nova-compositor.c    # Core compositor server and event loop
+├── jim-compositor.c    # Core compositor server and event loop
 ├── nova-input.c         # Input device handling (keyboard, pointer)
 ├── nova-output.c        # Output/monitor management
 ├── nova-view.c          # Window/view management
@@ -24,7 +24,7 @@ src/
 └── nova-animations.c    # Animation engine with spring physics
 
 include/
-└── nova-compositor.h    # Public API header
+└── jim-compositor.h    # Public API header
 ```
 
 ## Building
@@ -90,4 +90,4 @@ GPL-3.0-or-later
 
 ## Copyright
 
-Copyright (C) 2024 NovaOS Project
+Copyright (C) 2024 JimOS Project

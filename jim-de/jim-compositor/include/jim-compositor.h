@@ -1,9 +1,9 @@
 /*
- * NovaCompositor Header File
+ * JimCompositor Header File
  * 
- * Public API and type definitions for the NovaDe compositor
+ * Public API and type definitions for the JimDe compositor
  * 
- * Copyright (C) 2024 NovaOS Project
+ * Copyright (C) 2024 JimOS Project
  * Licensed under GPL-3.0-or-later
  */
 
@@ -28,23 +28,23 @@ extern "C" {
 typedef struct {
     int32_t x, y;
     int32_t width, height;
-} nova_rect_t;
+} jim_rect_t;
 
 /**
  * Color with alpha
  */
 typedef struct {
     float r, g, b, a;
-} nova_color_t;
+} jim_color_t;
 
 /**
  * Forward declarations
  */
-struct nova_server;
-struct nova_output;
-struct nova_seat;
-struct nova_view;
-struct nova_wm;
+struct jim_server;
+struct jim_output;
+struct jim_seat;
+struct jim_view;
+struct jim_wm;
 
 /* ============================================================================
  * Core Server API
@@ -53,22 +53,22 @@ struct nova_wm;
 /**
  * Create and initialize the compositor server
  */
-struct nova_server *nova_server_create(void);
+struct jim_server *jim_server_create(void);
 
 /**
  * Destroy the compositor server
  */
-void nova_server_destroy(struct nova_server *server);
+void jim_server_destroy(struct jim_server *server);
 
 /**
  * Run the compositor event loop
  */
-int nova_server_run(struct nova_server *server);
+int jim_server_run(struct jim_server *server);
 
 /**
  * Request compositor to quit
  */
-void nova_server_quit(struct nova_server *server);
+void jim_server_quit(struct jim_server *server);
 
 /* ============================================================================
  * View Management API
@@ -77,12 +77,12 @@ void nova_server_quit(struct nova_server *server);
 /**
  * Focus a specific view
  */
-void nova_server_focus_view(struct nova_server *server, struct nova_view *view);
+void jim_server_focus_view(struct jim_server *server, struct jim_view *view);
 
 /**
  * Find view at screen coordinates
  */
-struct nova_view *nova_server_view_at(struct nova_server *server,
+struct jim_view *jim_server_view_at(struct jim_server *server,
                                        double lx, double ly,
                                        struct wlr_surface **surface,
                                        double *sx, double *sy);
@@ -90,20 +90,20 @@ struct nova_view *nova_server_view_at(struct nova_server *server,
 /**
  * Close a view
  */
-void nova_server_close_view(struct nova_server *server, struct nova_view *view);
+void jim_server_close_view(struct jim_server *server, struct jim_view *view);
 
 /**
  * Move view to coordinates
  */
-void nova_server_move_view(struct nova_server *server, 
-                           struct nova_view *view,
+void jim_server_move_view(struct jim_server *server, 
+                           struct jim_view *view,
                            double lx, double ly);
 
 /**
  * Resize view
  */
-void nova_server_resize_view(struct nova_server *server,
-                             struct nova_view *view,
+void jim_server_resize_view(struct jim_server *server,
+                             struct jim_view *view,
                              int32_t width, int32_t height);
 
 /* ============================================================================
@@ -113,12 +113,12 @@ void nova_server_resize_view(struct nova_server *server,
 /**
  * Get primary output
  */
-struct nova_output *nova_server_get_primary_output(struct nova_server *server);
+struct jim_output *jim_server_get_primary_output(struct jim_server *server);
 
 /**
  * Get output count
  */
-int nova_server_get_output_count(struct nova_server *server);
+int jim_server_get_output_count(struct jim_server *server);
 
 /* ============================================================================
  * Input Management API
@@ -127,12 +127,12 @@ int nova_server_get_output_count(struct nova_server *server);
 /**
  * Get current seat
  */
-struct nova_seat *nova_server_get_current_seat(struct nova_server *server);
+struct jim_seat *jim_server_get_current_seat(struct jim_server *server);
 
 /**
  * Warp cursor to coordinates
  */
-void nova_server_warp_cursor(struct nova_server *server,
+void jim_server_warp_cursor(struct jim_server *server,
                              double lx, double ly);
 
 /* ============================================================================
@@ -142,37 +142,37 @@ void nova_server_warp_cursor(struct nova_server *server,
 /**
  * Fast memory copy (SIMD optimized)
  */
-void nova_memcpy_aligned(void *dest, const void *src, size_t n);
+void jim_memcpy_aligned(void *dest, const void *src, size_t n);
 
 /**
  * Fast memory set (AVX2 optimized)
  */
-void nova_memset_aligned(void *ptr, int value, size_t n);
+void jim_memset_aligned(void *ptr, int value, size_t n);
 
 /**
  * Fast pixel blending (SSE4 optimized)
  */
-void nova_blend_pixels(uint32_t *dest, uint32_t src, float alpha);
+void jim_blend_pixels(uint32_t *dest, uint32_t src, float alpha);
 
 /**
  * Fast matrix multiplication (SSE optimized)
  */
-void nova_matrix_multiply(float *result, const float *a, const float *b);
+void jim_matrix_multiply(float *result, const float *a, const float *b);
 
 /**
  * Fast integer square root
  */
-uint32_t nova_isqrt(uint32_t n);
+uint32_t jim_isqrt(uint32_t n);
 
 /**
  * Get CPU feature flags
  */
-uint32_t nova_get_cpu_features(void);
+uint32_t jim_get_cpu_features(void);
 
 /**
  * Get current time in milliseconds
  */
-uint64_t nova_get_time_ms(void);
+uint64_t jim_get_time_ms(void);
 
 /* ============================================================================
  * Window Manager API
@@ -181,32 +181,32 @@ uint64_t nova_get_time_ms(void);
 /**
  * Create window manager instance
  */
-struct nova_wm *nova_wm_create(struct nova_server *server);
+struct jim_wm *jim_wm_create(struct jim_server *server);
 
 /**
  * Destroy window manager
  */
-void nova_wm_destroy(struct nova_wm *wm);
+void jim_wm_destroy(struct jim_wm *wm);
 
 /**
  * Update window animations
  */
-void nova_wm_update_animations(struct nova_wm *wm);
+void jim_wm_update_animations(struct jim_wm *wm);
 
 /**
  * Switch to workspace
  */
-void nova_wm_switch_workspace(struct nova_wm *wm, int workspace_id);
+void jim_wm_switch_workspace(struct jim_wm *wm, int workspace_id);
 
 /**
  * Snap view to layout
  */
-void nova_wm_snap_view(struct nova_wm *wm, struct nova_view *view, int snap_type);
+void jim_wm_snap_view(struct jim_wm *wm, struct jim_view *view, int snap_type);
 
 /**
  * Check snap zone at coordinates
  */
-void *nova_wm_check_snap_zone(struct nova_wm *wm, double x, double y);
+void *jim_wm_check_snap_zone(struct jim_wm *wm, double x, double y);
 
 /* ============================================================================
  * Constants

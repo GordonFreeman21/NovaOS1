@@ -1,10 +1,10 @@
 /*
- * NovaCompositor - Core Wayland Compositor for NovaDe
+ * JimCompositor - Core Wayland Compositor for JimDe
  * 
  * A high-performance Wayland compositor built with C and optimized assembly
- * for the NovaOS desktop environment.
+ * for the JimOS desktop environment.
  * 
- * Copyright (C) 2024 NovaOS Project
+ * Copyright (C) 2024 JimOS Project
  * Licensed under GPL-3.0-or-later
  */
 
@@ -32,9 +32,9 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
-/* NovaCompositor Version */
+/* JimCompositor Version */
 #define NOVA_COMPOSITOR_VERSION "1.0.0"
-#define NOVA_COMPOSITOR_NAME "NovaDe Compositor"
+#define NOVA_COMPOSITOR_NAME "JimDe Compositor"
 
 /* Maximum limits */
 #define MAX_OUTPUTS 8
@@ -52,12 +52,12 @@
  * Forward Declarations
  * ============================================================================ */
 
-struct nova_server;
-struct nova_output;
-struct nova_seat;
-struct nova_view;
-struct nova_scene_graph;
-struct nova_animation;
+struct jim_server;
+struct jim_output;
+struct jim_seat;
+struct jim_view;
+struct jim_scene_graph;
+struct jim_animation;
 
 /* ============================================================================
  * Data Structures
@@ -69,14 +69,14 @@ struct nova_animation;
 typedef struct {
     int32_t x, y;
     int32_t width, height;
-} nova_rect_t;
+} jim_rect_t;
 
 /**
  * Color structure with alpha
  */
 typedef struct {
     float r, g, b, a;
-} nova_color_t;
+} jim_color_t;
 
 /**
  * Animation state for smooth transitions
@@ -90,13 +90,13 @@ typedef enum {
     ANIMATION_MOVE,
     ANIMATION_RESIZE,
     ANIMATION_WORKSPACE_SWITCH
-} nova_animation_type_t;
+} jim_animation_type_t;
 
 /**
  * Animation configuration
  */
-struct nova_animation {
-    nova_animation_type_t type;
+struct jim_animation {
+    jim_animation_type_t type;
     float progress;           /* 0.0 to 1.0 */
     float velocity;
     float target_value;
@@ -113,18 +113,18 @@ struct nova_animation {
 /**
  * View (window) representation
  */
-struct nova_view {
+struct jim_view {
     struct wl_list link;
-    struct nova_server *server;
+    struct jim_server *server;
     
     struct wlr_surface *surface;
     struct wlr_xdg_surface *xdg_surface;
     struct wlr_layer_surface_v1 *layer_surface;
     
     /* Geometry */
-    nova_rect_t geometry;
-    nova_rect_t pending_geometry;
-    nova_rect_t saved_geometry;   /* For restore from maximize */
+    jim_rect_t geometry;
+    jim_rect_t pending_geometry;
+    jim_rect_t saved_geometry;   /* For restore from maximize */
     
     /* State flags */
     bool mapped;
@@ -139,7 +139,7 @@ struct nova_view {
     int workspace_id;
     
     /* Animation */
-    struct nova_animation animation;
+    struct jim_animation animation;
     
     /* Title and app ID */
     char title[256];
@@ -152,9 +152,9 @@ struct nova_view {
 /**
  * Output (monitor) representation
  */
-struct nova_output {
+struct jim_output {
     struct wl_list link;
-    struct nova_server *server;
+    struct jim_server *server;
     
     struct wlr_output *wlr_output;
     struct wlr_output_layout_output *layout_output;
@@ -191,14 +191,14 @@ typedef enum {
     INPUT_POINTER,
     INPUT_TOUCH,
     INPUT_TABLET
-} nova_input_type_t;
+} jim_input_type_t;
 
 /**
  * Keyboard device
  */
-struct nova_keyboard {
+struct jim_keyboard {
     struct wl_list link;
-    struct nova_seat *seat;
+    struct jim_seat *seat;
     struct wlr_input_device *device;
     
     struct wl_listener modifiers;
@@ -210,9 +210,9 @@ struct nova_keyboard {
 /**
  * Pointer device
  */
-struct nova_pointer {
+struct jim_pointer {
     struct wl_list link;
-    struct nova_seat *seat;
+    struct jim_seat *seat;
     struct wlr_input_device *device;
     
     struct wl_listener motion;
@@ -225,16 +225,16 @@ struct nova_pointer {
     double x, y;
     uint32_t buttons;
     bool drag_active;
-    struct nova_view *drag_view;
+    struct jim_view *drag_view;
     int drag_offset_x, drag_offset_y;
 };
 
 /**
  * Seat (input context)
  */
-struct nova_seat {
+struct jim_seat {
     struct wl_list link;
-    struct nova_server *server;
+    struct jim_server *server;
     
     struct wlr_seat *wlr_seat;
     char name[32];
@@ -242,8 +242,8 @@ struct nova_seat {
     struct wl_list keyboards;
     struct wl_list pointers;
     
-    struct nova_keyboard *active_keyboard;
-    struct nova_pointer *active_pointer;
+    struct jim_keyboard *active_keyboard;
+    struct jim_pointer *active_pointer;
     
     /* Cursor */
     struct wlr_cursor *cursor;
@@ -275,17 +275,17 @@ typedef enum {
     SCENE_NODE_SURFACE,
     SCENE_NODE_RECT,
     SCENE_NODE_TREE
-} nova_scene_node_type_t;
+} jim_scene_node_type_t;
 
 /**
  * Scene graph node for rendering
  */
-struct nova_scene_node {
+struct jim_scene_node {
     struct wl_list link;
-    struct nova_scene_node *parent;
+    struct jim_scene_node *parent;
     struct wl_list children;
     
-    nova_scene_node_type_t type;
+    jim_scene_node_type_t type;
     bool enabled;
     int x, y;
     
@@ -300,17 +300,17 @@ struct nova_scene_node {
 /**
  * Keybinding definition
  */
-struct nova_keybinding {
+struct jim_keybinding {
     uint32_t modifiers;
     uint32_t key;
-    void (*handler)(struct nova_server *, struct nova_seat *);
+    void (*handler)(struct jim_server *, struct jim_seat *);
     const char *description;
 };
 
 /**
  * Main server structure
  */
-struct nova_server {
+struct jim_server {
     struct wl_display *wl_display;
     struct wl_event_loop *event_loop;
     
@@ -328,12 +328,12 @@ struct nova_server {
     
     /* Views (windows) */
     struct wl_list views;
-    struct nova_view *focused_view;
-    struct nova_view *grabbed_view;
+    struct jim_view *focused_view;
+    struct jim_view *grabbed_view;
     
     /* Seats (input) */
     struct wl_list seats;
-    struct nova_seat *current_seat;
+    struct jim_seat *current_seat;
     struct wl_listener new_input;
     
     /* XDG shell */
@@ -380,7 +380,7 @@ struct nova_server {
     struct wlr_idle *idle;
     
     /* Keybindings */
-    struct nova_keybinding keybindings[MAX_KEYBINDINGS];
+    struct jim_keybinding keybindings[MAX_KEYBINDINGS];
     int keybinding_count;
     
     /* Configuration */
@@ -410,7 +410,7 @@ struct nova_server {
  * Fast memory copy using SIMD instructions
  * Optimized for cache line alignment
  */
-static inline void nova_memcpy_aligned(void *dest, const void *src, size_t n) {
+static inline void jim_memcpy_aligned(void *dest, const void *src, size_t n) {
     /* Use inline assembly for optimal memory copying */
     __asm__ volatile (
         "cld\n\t"
@@ -425,7 +425,7 @@ static inline void nova_memcpy_aligned(void *dest, const void *src, size_t n) {
  * Fast memset using AVX2 when available
  * Falls back to standard memset if not aligned
  */
-static inline void nova_memset_aligned(void *ptr, int value, size_t n) {
+static inline void jim_memset_aligned(void *ptr, int value, size_t n) {
     size_t i;
     uint8_t *p = (uint8_t *)ptr;
     
@@ -460,7 +460,7 @@ static inline void nova_memset_aligned(void *ptr, int value, size_t n) {
  * Fast pixel blending using SSE4
  * Blends source and destination with alpha
  */
-static inline void nova_blend_pixels(uint32_t *dest, uint32_t src, float alpha) {
+static inline void jim_blend_pixels(uint32_t *dest, uint32_t src, float alpha) {
     uint32_t dst = *dest;
     
     __asm__ volatile (
@@ -487,7 +487,7 @@ static inline void nova_blend_pixels(uint32_t *dest, uint32_t src, float alpha) 
  * Matrix multiplication for transformations (4x4)
  * Uses SSE for parallel computation
  */
-static inline void nova_matrix_multiply(float *result, const float *a, const float *b) {
+static inline void jim_matrix_multiply(float *result, const float *a, const float *b) {
     __asm__ volatile (
         "movups (%[a]), %%xmm0\n\t"
         "movups 16(%[a]), %%xmm1\n\t"
@@ -525,7 +525,7 @@ static inline void nova_matrix_multiply(float *result, const float *a, const flo
  * Fast integer square root using Newton's method
  * Optimized with assembly for speed
  */
-static inline uint32_t nova_isqrt(uint32_t n) {
+static inline uint32_t jim_isqrt(uint32_t n) {
     uint32_t result;
     
     if (n == 0) return 0;
@@ -550,7 +550,7 @@ static inline uint32_t nova_isqrt(uint32_t n) {
 /**
  * Get CPU features via CPUID
  */
-static inline uint32_t nova_get_cpu_features(void) {
+static inline uint32_t jim_get_cpu_features(void) {
     uint32_t eax, ebx, ecx, edx;
     uint32_t features = 0;
     
@@ -598,8 +598,8 @@ static inline uint32_t nova_get_cpu_features(void) {
 /**
  * Create anonymous file for shared memory
  */
-static int nova_create_anonymous_file(size_t size) {
-    char template[] = "/tmp/nova-shared-XXXXXX";
+static int jim_create_anonymous_file(size_t size) {
+    char template[] = "/tmp/jim-shared-XXXXXX";
     int fd;
     int ret;
     
@@ -622,11 +622,11 @@ static int nova_create_anonymous_file(size_t size) {
 /**
  * Allocate shared memory buffer
  */
-static void *nova_allocate_shm(size_t size, int *fd_out) {
+static void *jim_allocate_shm(size_t size, int *fd_out) {
     int fd;
     void *data;
     
-    fd = nova_create_anonymous_file(size);
+    fd = jim_create_anonymous_file(size);
     if (fd < 0) {
         return NULL;
     }
@@ -644,7 +644,7 @@ static void *nova_allocate_shm(size_t size, int *fd_out) {
 /**
  * Get current time in milliseconds
  */
-static inline uint64_t nova_get_time_ms(void) {
+static inline uint64_t jim_get_time_ms(void) {
     struct timespec ts;
     clock_gettime(CLOCK_MONOTONIC, &ts);
     return (uint64_t)ts.tv_sec * 1000 + ts.tv_nsec / 1000000;
@@ -653,7 +653,7 @@ static inline uint64_t nova_get_time_ms(void) {
 /**
  * Clamp value between min and max
  */
-static inline float nova_clamp(float val, float min, float max) {
+static inline float jim_clamp(float val, float min, float max) {
     if (val < min) return min;
     if (val > max) return max;
     return val;
@@ -662,22 +662,22 @@ static inline float nova_clamp(float val, float min, float max) {
 /**
  * Linear interpolation
  */
-static inline float nova_lerp(float a, float b, float t) {
-    return a + (b - a) * nova_clamp(t, 0.0f, 1.0f);
+static inline float jim_lerp(float a, float b, float t) {
+    return a + (b - a) * jim_clamp(t, 0.0f, 1.0f);
 }
 
 /**
  * Smooth step function for animations
  */
-static inline float nova_smoothstep(float edge0, float edge1, float x) {
-    float t = nova_clamp((x - edge0) / (edge1 - edge0), 0.0f, 1.0f);
+static inline float jim_smoothstep(float edge0, float edge1, float x) {
+    float t = jim_clamp((x - edge0) / (edge1 - edge0), 0.0f, 1.0f);
     return t * t * (3.0f - 2.0f * t);
 }
 
 /**
  * Spring animation update
  */
-static void nova_animation_update(struct nova_animation *anim, uint64_t current_time) {
+static void jim_animation_update(struct jim_animation *anim, uint64_t current_time) {
     if (!anim->active) return;
     
     float dt = (current_time - anim->start_time) / 1000.0f;
@@ -696,23 +696,23 @@ static void nova_animation_update(struct nova_animation *anim, uint64_t current_
     
     anim->velocity += acceleration * 0.016f;  /* Assume 60 FPS */
     anim->current_value += anim->velocity * 0.016f;
-    anim->progress = nova_smoothstep(0.0f, 1.0f, dt / period);
+    anim->progress = jim_smoothstep(0.0f, 1.0f, dt / period);
 }
 
 /* ============================================================================
  * Global Server Instance
  * ============================================================================ */
 
-static struct nova_server *g_server = NULL;
+static struct jim_server *g_server = NULL;
 
 /* ============================================================================
  * Function Implementations
  * ============================================================================ */
 
 /**
- * Initialize the NovaCompositor server
+ * Initialize the JimCompositor server
  */
-static int nova_server_init(struct nova_server *server) {
+static int jim_server_init(struct jim_server *server) {
     int ret;
     
     memset(server, 0, sizeof(*server));
@@ -777,8 +777,8 @@ static int nova_server_init(struct nova_server *server) {
                                                            server->output_layout);
     
     /* Print CPU features */
-    uint32_t features = nova_get_cpu_features();
-    printf("NovaCompositor %s initializing...\n", NOVA_COMPOSITOR_VERSION);
+    uint32_t features = jim_get_cpu_features();
+    printf("JimCompositor %s initializing...\n", NOVA_COMPOSITOR_VERSION);
     printf("CPU Features:");
     if (features & CPU_FEATURE_SSE) printf(" SSE");
     if (features & CPU_FEATURE_SSE2) printf(" SSE2");
@@ -792,11 +792,11 @@ static int nova_server_init(struct nova_server *server) {
 /**
  * Add a keybinding
  */
-static void nova_server_add_keybinding(struct nova_server *server,
+static void jim_server_add_keybinding(struct jim_server *server,
                                         uint32_t modifiers,
                                         uint32_t key,
-                                        void (*handler)(struct nova_server *, 
-                                                       struct nova_seat *),
+                                        void (*handler)(struct jim_server *, 
+                                                       struct jim_seat *),
                                         const char *description) {
     if (server->keybinding_count >= MAX_KEYBINDINGS) {
         fprintf(stderr, "Maximum keybindings reached\n");
@@ -813,11 +813,11 @@ static void nova_server_add_keybinding(struct nova_server *server,
 /**
  * Find view at coordinates
  */
-static struct nova_view *nova_server_view_at(struct nova_server *server,
+static struct jim_view *jim_server_view_at(struct jim_server *server,
                                               double lx, double ly,
                                               struct wlr_surface **surface,
                                               double *sx, double *sy) {
-    struct nova_view *view;
+    struct jim_view *view;
     double _sx, _sy;
     struct wlr_surface *_surface = NULL;
     
@@ -842,9 +842,9 @@ static struct nova_view *nova_server_view_at(struct nova_server *server,
 /**
  * Focus a view
  */
-static void nova_server_focus_view(struct nova_server *server, 
-                                   struct nova_view *view) {
-    struct nova_seat *seat = server->current_seat;
+static void jim_server_focus_view(struct jim_server *server, 
+                                   struct jim_view *view) {
+    struct jim_seat *seat = server->current_seat;
     struct wlr_surface *prev_surface = NULL;
     
     if (!seat) return;
@@ -883,12 +883,12 @@ static void nova_server_focus_view(struct nova_server *server,
 /**
  * Process keybinding
  */
-static bool nova_server_process_keybinding(struct nova_server *server,
-                                           struct nova_seat *seat,
+static bool jim_server_process_keybinding(struct jim_server *server,
+                                           struct jim_seat *seat,
                                            uint32_t modifiers,
                                            uint32_t key) {
     for (int i = 0; i < server->keybinding_count; i++) {
-        struct nova_keybinding *kb = &server->keybindings[i];
+        struct jim_keybinding *kb = &server->keybindings[i];
         
         if (kb->modifiers == modifiers && kb->key == key) {
             kb->handler(server, seat);
@@ -902,10 +902,10 @@ static bool nova_server_process_keybinding(struct nova_server *server,
 /**
  * Destroy the server
  */
-static void nova_server_destroy(struct nova_server *server) {
-    struct nova_view *view, *view_tmp;
-    struct nova_output *output, *output_tmp;
-    struct nova_seat *seat, *seat_tmp;
+static void jim_server_destroy(struct jim_server *server) {
+    struct jim_view *view, *view_tmp;
+    struct jim_output *output, *output_tmp;
+    struct jim_seat *seat, *seat_tmp;
     
     /* Clean up views */
     wl_list_for_each_safe(view, view_tmp, &server->views, link) {
@@ -940,7 +940,7 @@ static void nova_server_destroy(struct nova_server *server) {
  * Signal Handler
  * ============================================================================ */
 
-static void nova_signal_handler(int signal) {
+static void jim_signal_handler(int signal) {
     if (g_server) {
         g_server->quit = 1;
     }
@@ -951,11 +951,11 @@ static void nova_signal_handler(int signal) {
  * ============================================================================ */
 
 int main(int argc, char *argv[]) {
-    struct nova_server server;
+    struct jim_server server;
     int ret;
     
     printf("╔════════════════════════════════════════════════════════╗\n");
-    printf("║         NovaDe Compositor - NovaOS Desktop             ║\n");
+    printf("║         JimDe Compositor - JimOS Desktop             ║\n");
     printf("║              Version: %s                        ║\n", NOVA_COMPOSITOR_VERSION);
     printf("╚════════════════════════════════════════════════════════╝\n\n");
     
@@ -971,17 +971,17 @@ int main(int argc, char *argv[]) {
             printf("  -v, --version   Show version information\n");
             return 0;
         } else if (strcmp(argv[i], "--version") == 0 || strcmp(argv[i], "-V") == 0) {
-            printf("NovaDe Compositor %s\n", NOVA_COMPOSITOR_VERSION);
+            printf("JimDe Compositor %s\n", NOVA_COMPOSITOR_VERSION);
             return 0;
         }
     }
     
     /* Set up signal handlers */
-    signal(SIGINT, nova_signal_handler);
-    signal(SIGTERM, nova_signal_handler);
+    signal(SIGINT, jim_signal_handler);
+    signal(SIGTERM, jim_signal_handler);
     
     /* Initialize server */
-    ret = nova_server_init(&server);
+    ret = jim_server_init(&server);
     if (ret != 0) {
         fprintf(stderr, "Failed to initialize server\n");
         return 1;
@@ -992,8 +992,8 @@ int main(int argc, char *argv[]) {
     
     /* Set up default keybindings */
     // These will be implemented in subsequent files
-    // nova_server_add_keybinding(&server, WLR_MODIFIER_ALT, KEY_TAB, ...);
-    // nova_server_add_keybinding(&server, WLR_MODIFIER_LOGO, KEY_Q, ...);
+    // jim_server_add_keybinding(&server, WLR_MODIFIER_ALT, KEY_TAB, ...);
+    // jim_server_add_keybinding(&server, WLR_MODIFIER_LOGO, KEY_Q, ...);
     
     /* Run event loop */
     printf("Starting Wayland compositor...\n");
@@ -1001,7 +1001,7 @@ int main(int argc, char *argv[]) {
     
     /* Cleanup */
     printf("Shutting down...\n");
-    nova_server_destroy(&server);
+    jim_server_destroy(&server);
     
     return 0;
 }

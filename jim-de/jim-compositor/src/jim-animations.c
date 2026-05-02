@@ -1,10 +1,10 @@
 /*
- * Nova Animations
+ * Jim Animations
  * 
- * Smooth animation system for NovaDe compositor
+ * Smooth animation system for JimDe compositor
  * Using spring physics and bezier curves
  * 
- * Copyright (C) 2024 NovaOS Project
+ * Copyright (C) 2024 JimOS Project
  * Licensed under GPL-3.0-or-later
  */
 
@@ -13,7 +13,7 @@
 #include <string.h>
 #include <math.h>
 #include <stdint.h>
-#include "nova-compositor.h"
+#include "jim-compositor.h"
 
 #define ANIMATION_FPS 60
 #define DT (1.0f / 60.0f)
@@ -37,7 +37,7 @@ static float cubic_bezier(float t, float p1x, float p1y, float p2x, float p2y) {
  * Spring animation update
  * F = -kx - cv (Hooke's law with damping)
  */
-void nova_animation_spring_update(float *current, float target, 
+void jim_animation_spring_update(float *current, float target, 
                                    float *velocity, float tension, 
                                    float damping, float dt) {
     float displacement = target - *current;
@@ -50,7 +50,7 @@ void nova_animation_spring_update(float *current, float target,
 /**
  * Ease-in-out quadratic
  */
-float nova_ease_in_out_quad(float t) {
+float jim_ease_in_out_quad(float t) {
     t = fmaxf(0.0f, fminf(1.0f, t));
     return t < 0.5f ? 2.0f * t * t : -1.0f + (4.0f - 2.0f * t) * t;
 }
@@ -58,7 +58,7 @@ float nova_ease_in_out_quad(float t) {
 /**
  * Ease-in-out cubic
  */
-float nova_ease_in_out_cubic(float t) {
+float jim_ease_in_out_cubic(float t) {
     t = fmaxf(0.0f, fminf(1.0f, t));
     return t < 0.5f ? 4.0f * t * t * t : 1.0f - powf(-2.0f * t + 2.0f, 3.0f) / 2.0f;
 }
@@ -66,7 +66,7 @@ float nova_ease_in_out_cubic(float t) {
 /**
  * Ease-out elastic (spring-like bounce)
  */
-float nova_ease_out_elastic(float t) {
+float jim_ease_out_elastic(float t) {
     t = fmaxf(0.0f, fminf(1.0f, t));
     if (t == 0.0f) return 0.0f;
     if (t == 1.0f) return 1.0f;
@@ -78,24 +78,24 @@ float nova_ease_out_elastic(float t) {
 /**
  * Animate rectangle with easing
  */
-void nova_animate_rect(nova_rect_t *rect, const nova_rect_t *target, 
-                       float progress, nova_animation_type_t type) {
+void jim_animate_rect(jim_rect_t *rect, const jim_rect_t *target, 
+                       float progress, jim_animation_type_t type) {
     if (!rect || !target) return;
     
     float eased_progress;
     
     switch (type) {
         case ANIMATION_OPEN:
-            eased_progress = nova_ease_out_elastic(progress);
+            eased_progress = jim_ease_out_elastic(progress);
             break;
         case ANIMATION_CLOSE:
-            eased_progress = nova_ease_in_out_cubic(progress);
+            eased_progress = jim_ease_in_out_cubic(progress);
             break;
         case ANIMATION_MINIMIZE:
-            eased_progress = nova_ease_in_out_quad(progress);
+            eased_progress = jim_ease_in_out_quad(progress);
             break;
         default:
-            eased_progress = nova_ease_in_out_cubic(progress);
+            eased_progress = jim_ease_in_out_cubic(progress);
             break;
     }
     
@@ -108,7 +108,7 @@ void nova_animate_rect(nova_rect_t *rect, const nova_rect_t *target,
 /**
  * Initialize animation system
  */
-int nova_animations_init(void) {
+int jim_animations_init(void) {
     printf("Animation system initialized (%d FPS)\n", ANIMATION_FPS);
     return 0;
 }
@@ -116,6 +116,6 @@ int nova_animations_init(void) {
 /**
  * Cleanup animation system
  */
-void nova_animations_fini(void) {
+void jim_animations_fini(void) {
     printf("Animation system cleaned up\n");
 }

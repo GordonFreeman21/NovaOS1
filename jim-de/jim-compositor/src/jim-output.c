@@ -1,10 +1,10 @@
 /*
- * Nova Output Management
+ * Jim Output Management
  * 
- * Monitor/output handling for NovaDe compositor including
+ * Monitor/output handling for JimDe compositor including
  * multi-monitor support, resolution, and refresh rate management
  * 
- * Copyright (C) 2024 NovaOS Project
+ * Copyright (C) 2024 JimOS Project
  * Licensed under GPL-3.0-or-later
  */
 
@@ -22,10 +22,10 @@
 #include <wlr/render/swapchain.h>
 #include <drm_fourcc.h>
 
-#include "nova-compositor.h"
+#include "jim-compositor.h"
 
 /* Internal structures */
-struct nova_server {
+struct jim_server {
     struct wl_display *wl_display;
     struct wlr_backend *backend;
     struct wlr_renderer *renderer;
@@ -40,9 +40,9 @@ struct nova_server {
     volatile sig_atomic_t quit;
 };
 
-struct nova_output {
+struct jim_output {
     struct wl_list link;
-    struct nova_server *server;
+    struct jim_server *server;
     struct wlr_output *wlr_output;
     struct wlr_output_layout_output *layout_output;
     int current_workspace;
@@ -62,7 +62,7 @@ struct nova_output {
 /**
  * Get preferred mode for output
  */
-static struct wlr_output_mode *nova_output_preferred_mode(struct wlr_output *output) {
+static struct wlr_output_mode *jim_output_preferred_mode(struct wlr_output *output) {
     struct wlr_output_mode *mode;
     struct wlr_output_mode *preferred = NULL;
     
@@ -90,7 +90,7 @@ static struct wlr_output_mode *nova_output_preferred_mode(struct wlr_output *out
  * Frame render handler
  */
 static void handle_output_frame(struct wl_listener *listener, void *data) {
-    struct nova_output *output = wl_container_of(listener, output, frame);
+    struct jim_output *output = wl_container_of(listener, output, frame);
     struct wlr_output *wlr_output = output->wlr_output;
     
     /* Check if output is enabled */
@@ -125,7 +125,7 @@ static void handle_output_frame(struct wl_listener *listener, void *data) {
  * Output state request handler
  */
 static void handle_output_request_state(struct wl_listener *listener, void *data) {
-    struct nova_output *output = wl_container_of(listener, output, request_state);
+    struct jim_output *output = wl_container_of(listener, output, request_state);
     const struct wlr_output_event_request_state *event = data;
     
     wlr_output_commit_state(output->wlr_output, event->state);
@@ -134,7 +134,7 @@ static void handle_output_request_state(struct wl_listener *listener, void *data
 /**
  * Configure output with mode and settings
  */
-static void nova_output_configure(struct nova_output *output,
+static void jim_output_configure(struct jim_output *output,
                                    struct wlr_output_mode *mode,
                                    float scale,
                                    int32_t transform) {
@@ -144,7 +144,7 @@ static void nova_output_configure(struct nova_output *output,
     if (mode) {
         wlr_output_set_mode(wlr_output, mode);
     } else {
-        mode = nova_output_preferred_mode(wlr_output);
+        mode = jim_output_preferred_mode(wlr_output);
         if (mode) {
             wlr_output_set_mode(wlr_output, mode);
         }
@@ -173,9 +173,9 @@ static void nova_output_configure(struct nova_output *output,
 /**
  * Create output from wlr_output
  */
-static struct nova_output *nova_output_create(struct nova_server *server,
+static struct jim_output *jim_output_create(struct jim_server *server,
                                                struct wlr_output *wlr_output) {
-    struct nova_output *output = calloc(1, sizeof(*output));
+    struct jim_output *output = calloc(1, sizeof(*output));
     if (!output) {
         fprintf(stderr, "Failed to allocate output\n");
         return NULL;
@@ -218,7 +218,7 @@ static struct nova_output *nova_output_create(struct nova_server *server,
     }
     
     /* Configure output */
-    nova_output_configure(output, NULL, 1.0f, -1);
+    jim_output_configure(output, NULL, 1.0f, -1);
     
     /* Get dimensions */
     output->width = wlr_output->width;
@@ -239,7 +239,7 @@ static struct nova_output *nova_output_create(struct nova_server *server,
 /**
  * Destroy output
  */
-static void nova_output_destroy(struct nova_output *output) {
+static void jim_output_destroy(struct jim_output *output) {
     if (!output) return;
     
     /* Remove listeners */
@@ -264,20 +264,20 @@ static void nova_output_destroy(struct nova_output *output) {
  * Handle new output connection
  */
 static void handle_new_output(struct wl_listener *listener, void *data) {
-    struct nova_server *server = wl_container_of(listener, server, new_output);
+    struct jim_server *server = wl_container_of(listener, server, new_output);
     struct wlr_output *wlr_output = data;
     
     /* Configure output for desktop use */
     wlr_output_init_render(wlr_output, server->allocator, server->renderer);
     
     /* Create nova output */
-    nova_output_create(server, wlr_output);
+    jim_output_create(server, wlr_output);
 }
 
 /**
  * Initialize output subsystem
  */
-int nova_output_init(struct nova_server *server) {
+int jim_output_init(struct jim_server *server) {
     wl_list_init(&server->outputs);
     
     /* Set up output listener */
@@ -292,11 +292,11 @@ int nova_output_init(struct nova_server *server) {
 /**
  * Cleanup output subsystem
  */
-void nova_output_fini(struct nova_server *server) {
-    struct nova_output *output, *tmp;
+void jim_output_fini(struct jim_server *server) {
+    struct jim_output *output, *tmp;
     
     wl_list_for_each_safe(output, tmp, &server->outputs, link) {
-        nova_output_destroy(output);
+        jim_output_destroy(output);
     }
     
     printf("Output subsystem cleaned up\n");
@@ -305,10 +305,10 @@ void nova_output_fini(struct nova_server *server) {
 /**
  * Get primary output (first enabled output)
  */
-struct nova_output *nova_server_get_primary_output(struct nova_server *server) {
+struct jim_output *jim_server_get_primary_output(struct jim_server *server) {
     if (!server) return NULL;
     
-    struct nova_output *output;
+    struct jim_output *output;
     wl_list_for_each(output, &server->outputs, link) {
         if (output->enabled && output->powered_on) {
             return output;
@@ -321,11 +321,11 @@ struct nova_output *nova_server_get_primary_output(struct nova_server *server) {
 /**
  * Get output count
  */
-int nova_server_get_output_count(struct nova_server *server) {
+int jim_server_get_output_count(struct jim_server *server) {
     if (!server) return 0;
     
     int count = 0;
-    struct nova_output *output;
+    struct jim_output *output;
     wl_list_for_each(output, &server->outputs, link) {
         if (output->enabled) {
             count++;
@@ -338,7 +338,7 @@ int nova_server_get_output_count(struct nova_server *server) {
 /**
  * Set output scale
  */
-int nova_output_set_scale(struct nova_output *output, float scale) {
+int jim_output_set_scale(struct jim_output *output, float scale) {
     if (!output || scale <= 0) return -1;
     
     wlr_output_set_scale(output->wlr_output, scale);
@@ -350,7 +350,7 @@ int nova_output_set_scale(struct nova_output *output, float scale) {
 /**
  * Set output mode
  */
-int nova_output_set_mode(struct nova_output *output, 
+int jim_output_set_mode(struct jim_output *output, 
                          int32_t width, int32_t height, 
                          int32_t refresh_mhz) {
     if (!output) return -1;
@@ -386,10 +386,10 @@ int nova_output_set_mode(struct nova_output *output,
 /**
  * Arrange outputs in layout
  */
-int nova_output_arrange(struct nova_server *server, 
+int jim_output_arrange(struct jim_server *server, 
                         const char *output_name,
                         int32_t x, int32_t y) {
-    struct nova_output *output;
+    struct jim_output *output;
     
     wl_list_for_each(output, &server->outputs, link) {
         if (strcmp(output->name, output_name) == 0) {
@@ -405,7 +405,7 @@ int nova_output_arrange(struct nova_server *server,
 /**
  * Enable/disable output
  */
-int nova_output_set_enabled(struct nova_output *output, bool enabled) {
+int jim_output_set_enabled(struct jim_output *output, bool enabled) {
     if (!output) return -1;
     
     wlr_output_enable(output->wlr_output, enabled);

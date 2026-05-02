@@ -1,14 +1,14 @@
-# NovaOS - Complete Debian-Based Linux Operating System
+# JimOS - Complete Debian-Based Linux Operating System
 
 ## Overview
 
-NovaOS is a complete, production-ready Debian-based Linux distribution featuring
-the custom NovaDe desktop environment. Designed to exceed Windows in usability,
+JimOS is a complete, production-ready Debian-based Linux distribution featuring
+the custom JimDe desktop environment. Designed to exceed Windows in usability,
 aesthetics, and functionality while maintaining Linux power and flexibility.
 
 ## Features
 
-- **NovaDe Desktop**: Custom Wayland-based desktop environment with Windows-like UX
+- **JimDe Desktop**: Custom Wayland-based desktop environment with Windows-like UX
 - **Complete Out-of-Box Experience**: All codecs, drivers, and essential software pre-installed
 - **Gaming Ready**: Steam, Proton, GameMode, MangoHud pre-configured
 - **Windows Compatibility**: Wine integration, NTFS support, migration tools
@@ -20,7 +20,7 @@ aesthetics, and functionality while maintaining Linux power and flexibility.
 ### Build the ISO
 
 ```bash
-cd /workspace/NovaOS
+cd /workspace/JimOS
 make build-iso
 ```
 
@@ -40,12 +40,11 @@ sudo make create-usb USB_DEVICE=/dev/sdX
 
 - [BUILD.md](BUILD.md) - Complete build instructions
 - [CONTRIBUTING.md](CONTRIBUTING.md) - Contribution guidelines
-- [README_APPS.md](nova-apps/README.md) - Application documentation
-- [README_DE.md](nova-de/README.md) - Desktop environment documentation
+- [README_APPS.md](jim-apps/README.md) - Application documentation
+- [README_DE.md](jim-de/README.md) - Desktop environment documentation
 
 ## System Requirements
 
 - **Minimum**: 2GB RAM, 20GB storage, dual-core CPU
 - **Recommended**: 4GB RAM, 50GB storage, quad-core CPU
 - **Optimal**: 8GB+ RAM, 100GB+ SSD, quad-core+ CPU
-
